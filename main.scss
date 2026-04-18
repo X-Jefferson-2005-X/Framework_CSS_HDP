@@ -1,0 +1,21 @@
+// 1. Abstracts (Variables y Mixins primero, para que el resto pueda usarlos)
+@use 'abstracts/variables';
+@use 'abstracts/mixins';
+
+// 2. Base (Reseteos globales)
+@use 'base/reset';
+
+// 3. Layout (Estructura de rejilla)
+@use 'layout/grid';
+
+// 4. Components (Componentes UI)
+@use 'components/buttons';
+@use 'components/cards';
+@use 'components/alerts';
+@use 'components/forms';
+@use 'components/navbar';
+@use 'components/badges';
+@use 'components/tables';
+
+// 5. Utilities (Clases de un solo propósito, van al final para sobrescribir)
+@use 'utilities/helpers';

@@ -1,0 +1,63 @@
+@use 'variables' as v;
+@use 'sass:map';
+@use 'sass:math';
+
+
+    .caja {
+        width: 100%;
+        @include respond-to("md") {width: 50%;}
+    }
+@mixin respond-to($breakpoint){
+    @if map.has-key(v.$breakpoints, $breakpoint) {
+        $min-width: map.get(v.$breakpoints, $breakpoint);
+        @media (min-width: $min-width){
+            @content;
+        }
+    }
+    @else {
+        @error "BREAKPOINT '#{$breakpoint}' NO EXISTE. LAS OPCIONES VALIDAS SON: #{map.keys(v.$breakpoints)}.";
+    }
+}
+
+@mixin respond-below($breakpoint){
+    @if map.has-key(v.$breakpoints, $breakpoint){
+        $max-width: map.get(v.$breakpoints, $breakpoint) - 0.02px;
+        @media (max-width: $max-width){
+            @content;
+        }
+    }
+    @else{
+        @error "BREAKPOINT '#{$breakpoint}' NO EXISTE.";
+    }
+}
+
+@mixin make-col($size, $columns: v.$grid-columns) {
+
+  flex: 0 0 auto;
+
+  width: math.percentage(math.div($size, $columns));
+}
+
+@mixin make-col-auto {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+//para transicion suave "botones, links o cualquier elemento que tenga un hover"
+@mixin smooth-transition($property: all, $duration: 0.2s) {
+  transition: $property $duration ease-in-out;
+}

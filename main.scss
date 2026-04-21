@@ -1,4 +1,4 @@
-// 1. Abstracts (Variables y Mixins primero, para que el resto pueda usarlos)
+// 1. Abstracts Variables y Mixins globales
 @use 'abstracts/variables';
 @use 'abstracts/mixins';
 
@@ -17,5 +17,5 @@
 @use 'components/badges';
 @use 'components/tables';
 
-// 5. Utilities (Clases de un solo propósito, van al final para sobrescribir)
+// 5. Utilities Clases de un solo proposito
 @use 'utilities/helpers';

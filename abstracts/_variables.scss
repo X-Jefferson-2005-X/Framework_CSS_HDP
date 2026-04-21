@@ -95,10 +95,10 @@ $spacers: (
   5: $spacer * 3, // 48px
 );
 
-//variables de redondeo...
+//variables de redondeo
 $border-radius-sm: 0.25rem; //4px
 $border-radius-lg: 1rem; //16px
-$border-radius-pill: 50rem; // Para bordes completamente redondeados (pills)
+$border-radius-pill: 50rem; // Para bordes completamente redondeados 
 
 //bordes y sombras
 $border-width: 1px; // Ancho estandar para bordes
@@ -117,7 +117,7 @@ $grid-columns: 12; // Numero de columnas en el sistema de grid
 $grid-gutter: 1.5rem; //24 px gap entre columnas
 
 //Z-index
-$zindex-dropdown: 1000; // Para dropdowns y menús desplegables
+$zindex-dropdown: 1000; // Para dropdowns y menus desplegables
 $zindex-sticky: 1020; // Para elementos sticky como navbars
 $zindex-fixed: 1030; // Para elementos fixed como modales
 $zindex-modal: 1050; // Para modales y overlays

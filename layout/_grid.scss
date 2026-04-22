@@ -1,0 +1,131 @@
+
+
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+@use 'sass:math';
+
+
+
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: math.div(v.$grid-gutter, -2);
+    margin-left: math.div(v.$grid-gutter, -2);
+    box-sizing: border-box;
+
+    
+    &.row-no-gutter {
+        margin-right: 0;
+        margin-left: 0;
+
+        > [class*="col"] {
+            padding-right: 0;
+            padding-left: 0;
+        }
+    }
+}
+
+
+
+%col-base {
+    position: relative;
+    width: 100%;                                         
+    padding-right: math.div(v.$grid-gutter, 2);
+    padding-left: math.div(v.$grid-gutter, 2);
+    box-sizing: border-box;
+}
+
+
+
+.col {
+    @extend %col-base;
+    flex: 1 0 0%;
+}
+
+
+.col-auto {
+    @extend %col-base;
+    @include m.make-col-auto;
+}
+
+
+@for $i from 1 through v.$grid-columns {
+    .col-#{$i} {
+        @extend %col-base;
+        @include m.make-col($i, v.$grid-columns);
+    }
+}
+
+
+
+
+@each $bp, $width in v.$breakpoints {
+    @include m.respond-to($bp) {
+
+        .col-#{$bp} {
+            @extend %col-base;
+            flex: 1 0 0%;
+        }
+
+        .col-#{$bp}-auto {
+            @extend %col-base;
+            @include m.make-col-auto;
+        }
+
+        @for $i from 1 through v.$grid-columns {
+            .col-#{$bp}-#{$i} {
+                @extend %col-base;
+                @include m.make-col($i, v.$grid-columns);
+            }
+        }
+    }
+}
+
+
+
+
+@for $i from 0 through (v.$grid-columns - 1) {
+    .offset-#{$i} {
+        margin-left: if(
+            $i == 0,
+            0,
+            math.percentage(math.div($i, v.$grid-columns))
+        );
+    }
+}
+
+@each $bp, $width in v.$breakpoints {
+    @include m.respond-to($bp) {
+        @for $i from 0 through (v.$grid-columns - 1) {
+            .offset-#{$bp}-#{$i} {
+                margin-left: if(
+                    $i == 0,
+                    0,
+                    math.percentage(math.div($i, v.$grid-columns))
+                );
+            }
+        }
+    }
+}
+
+
+
+
+.order-first { order: -1; }
+.order-last  { order: 13; }
+
+@for $i from 0 through 12 {
+    .order-#{$i} { order: $i; }
+}
+
+@each $bp, $width in v.$breakpoints {
+    @include m.respond-to($bp) {
+        .order-#{$bp}-first { order: -1; }
+        .order-#{$bp}-last  { order: 13; }
+
+        @for $i from 0 through 12 {
+            .order-#{$bp}-#{$i} { order: $i; }
+        }
+    }
+}

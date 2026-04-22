@@ -11,13 +11,13 @@ $info: #38bdf8;
 
 // Escala de Grises
 $white: #ffffff;
-$gray-100: #1e293b; // Fondo de tarjetas/secciones
-$gray-300: #334155; // Bordes y líneas divisorias
-$gray-600: #94a3b8; // Texto secundario
-$gray-900: #f8fafc; // Texto principal (blanco roto)
-$black: #0f172a; // Fondo base de la pagina
+$bg-surface: #1e293b; // Fondo de tarjetas/secciones
+$border-base: #334155; // Bordes y líneas divisorias
+$text-secundario: #94a3b8; // Texto secundario
+$text-base: #f8fafc; // Texto principal (blanco roto)
+$bg-base: #0f172a; // Fondo base de la pagina
 
-// Mapa de colores "para iteracion @each en utilidades y comnponentes"
+// Mapa de colores para iteracion @each en utilidades y comnponentes
 $colors: (
   "primary": $primary,
   "secondary": $secondary,

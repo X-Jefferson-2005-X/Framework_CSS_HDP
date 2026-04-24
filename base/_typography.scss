@@ -1,0 +1,211 @@
+// =============================================================================
+// BASE / TYPOGRAPHY
+// -----------------------------------------------------------------------------
+// Integrante 1 — Arquitecto Core y Layout
+//
+// Objetivo:
+//   Definir la jerarquía visual del texto: títulos, párrafos, enlaces,
+//   listas, código. Al igual que _reset.scss, este archivo opera sobre
+//   etiquetas HTML globales (no clases). Las clases de tamaño (fs-1, fs-2)
+//   viven en utilities/_helpers.scss del Integrante 3.
+//
+// Escala tipográfica basada en proporción 1.25 (Major Third):
+//   h6 = 1rem  -> h5 = 1.25rem -> h4 = 1.5rem -> h3 = 1.75rem
+//   -> h2 = 2rem -> h1 = 2.5rem
+// Esta escala ya está definida en $font-sizes de _variables.scss.
+// =============================================================================
+
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+@use 'sass:map';
+
+
+// -----------------------------------------------------------------------------
+// 1. TÍTULOS (h1 - h6)
+// -----------------------------------------------------------------------------
+// Iteramos el mapa $font-sizes con @each para evitar escribir 6 bloques.
+// Esto es lógica computacional (clase 11 p.27): el compilador genera las
+// reglas en build-time, el navegador recibe CSS estático.
+// -----------------------------------------------------------------------------
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: v.$font-family-heading;
+    font-weight: v.$font-weight-bold;
+    line-height: 1.2;                    // títulos más ajustados que texto
+    color: v.$text-base;
+    margin-bottom: v.$spacer * 0.75;     // 12px debajo de cada título
+    letter-spacing: -0.01em;             // levemente más compacto (estilo dashboard)
+}
+
+// Asignación de tamaños desde el mapa
+@each $level, $size in v.$font-sizes {
+    h#{$level} {
+        font-size: $size;
+    }
+}
+
+// h1 y h2 en pantallas pequeñas deben escalar para no romper layout móvil
+h1 {
+    @include m.respond-below('md') {
+        font-size: map.get(v.$font-sizes, 2);   // en móvil h1 se iguala a h2
+    }
+}
+
+
+// -----------------------------------------------------------------------------
+// 2. PÁRRAFOS Y TEXTO CORRIDO
+// -----------------------------------------------------------------------------
+
+p {
+    margin-bottom: v.$spacer;            // 16px entre párrafos
+    line-height: v.$line-height-base;    // 1.5 para buena legibilidad
+    color: v.$text-base;
+
+    // El último párrafo dentro de un contenedor no lleva margen inferior,
+    // evitando espacio blanco innecesario al final de una sección.
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+// Texto secundario: para descripciones, metadatos, subtítulos discretos.
+small,
+.text-muted {
+    font-size: v.$font-size-sm;
+    color: v.$text-secundario;
+}
+
+// Énfasis fuerte y tenue
+strong, b {
+    font-weight: v.$font-weight-bold;
+    color: v.$text-base;
+}
+
+em, i {
+    font-style: italic;
+}
+
+
+// -----------------------------------------------------------------------------
+// 3. ENLACES
+// -----------------------------------------------------------------------------
+// Usamos color $primary (teal #2DD4BF) para enlaces. Hover con transición
+// suave usando el mixin smooth-transition de Jefferson.
+// -----------------------------------------------------------------------------
+
+a {
+    color: v.$primary;
+    @include m.smooth-transition(color);
+
+    &:hover {
+        color: darken(v.$primary, 10%);
+        text-decoration: underline;
+    }
+
+    &:focus-visible {
+        // El reset ya lo maneja, pero reafirmamos contraste.
+        outline-color: v.$primary;
+    }
+}
+
+
+// -----------------------------------------------------------------------------
+// 4. LISTAS CON CONTENIDO
+// -----------------------------------------------------------------------------
+// En el reset quitamos los bullets globalmente. Pero si una lista aparece
+// dentro de texto corriente (artículos, documentación), queremos los
+// bullets de vuelta. Usamos la clase .list-styled como opt-in.
+// -----------------------------------------------------------------------------
+
+.list-styled {
+    padding-left: v.$spacer * 1.5;
+    margin-bottom: v.$spacer;
+
+    &.list-styled--disc  { list-style: disc; }
+    &.list-styled--num   { list-style: decimal; }
+
+    li {
+        margin-bottom: v.$spacer * 0.25;
+    }
+}
+
+
+// -----------------------------------------------------------------------------
+// 5. CITAS
+// -----------------------------------------------------------------------------
+
+blockquote {
+    margin: v.$spacer 0;
+    padding-left: v.$spacer;
+    border-left: 4px solid v.$primary;
+    color: v.$text-secundario;
+    font-style: italic;
+}
+
+
+// -----------------------------------------------------------------------------
+// 6. CÓDIGO INLINE Y BLOQUES DE CÓDIGO
+// -----------------------------------------------------------------------------
+// Crítico para tu sitio de documentación (requisito 2.1 del lab), donde
+// mostrarás ejemplos HTML junto a cada componente renderizado.
+// -----------------------------------------------------------------------------
+
+code,
+kbd,
+samp,
+pre {
+    font-family: "Fira Code", "Consolas", "Courier New", monospace;
+    font-size: 0.9em;
+}
+
+// Código inline dentro de un párrafo
+code {
+    padding: 0.15em 0.4em;
+    background-color: v.$bg-surface;
+    color: v.$primary;
+    border-radius: v.$border-radius-sm;
+    border: v.$border-width solid v.$border-base;
+}
+
+// Bloques de código (<pre><code>...</code></pre>)
+pre {
+    display: block;
+    padding: v.$spacer;
+    margin-bottom: v.$spacer;
+    background-color: v.$bg-surface;
+    border: v.$border-width solid v.$border-base;
+    border-radius: v.$border-radius;
+    overflow-x: auto;                    // scroll horizontal si el código es largo
+    line-height: 1.5;
+
+    code {
+        padding: 0;
+        background: transparent;
+        border: none;
+        color: v.$text-base;
+    }
+}
+
+
+// -----------------------------------------------------------------------------
+// 7. LÍNEAS DIVISORIAS
+// -----------------------------------------------------------------------------
+
+hr {
+    border: 0;
+    border-top: v.$border-width solid v.$border-base;
+    margin: v.$spacer * 1.5 0;
+}
+
+
+// -----------------------------------------------------------------------------
+// 8. SELECCIÓN DE TEXTO
+// -----------------------------------------------------------------------------
+// Detalle de profesionalismo: el color de fondo cuando el usuario selecciona
+// texto con el ratón. Debe alinearse con la marca.
+// -----------------------------------------------------------------------------
+
+::selection {
+    background-color: v.$primary;
+    color: v.$bg-base;
+}

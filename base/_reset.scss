@@ -1,32 +1,9 @@
-// =============================================================================
-// BASE / RESET
-// -----------------------------------------------------------------------------
-// Integrante 1 — Arquitecto Core y Layout
-//
-// Objetivo:
-//   Neutralizar las diferencias de estilo por defecto que cada navegador
-//   (Chrome, Firefox, Safari, Edge) aplica a las etiquetas HTML. Sin un
-//   reset, el mismo H1 se ve distinto en cada navegador.
-//
-// Basado en la filosofía de:
-//   - Josh Comeau's Modern CSS Reset (2023)
-//   - Normalize.css (para inputs y media)
-//   - Eric Meyer's Reset (punto de partida histórico)
-//
-// Este archivo NO usa clases: opera directamente sobre etiquetas HTML
-// globales, siguiendo la convención de la carpeta base/.
-// =============================================================================
+
 
 @use '../abstracts/variables' as v;
 
 
-// -----------------------------------------------------------------------------
-// 1. BOX-SIZING UNIVERSAL
-// -----------------------------------------------------------------------------
-// border-box hace que padding y border NO sumen al ancho total del elemento.
-// Sin esto, un div con width:100% + padding:20px mediría 100% + 40px y
-// rompería el layout. Esta es la primera regla de cualquier proyecto moderno.
-// -----------------------------------------------------------------------------
+
 
 *,
 *::before,
@@ -35,12 +12,7 @@
 }
 
 
-// -----------------------------------------------------------------------------
-// 2. MARGIN Y PADDING POR DEFECTO EN CERO
-// -----------------------------------------------------------------------------
-// Los navegadores aplican márgenes arbitrarios a h1-h6, p, ul, figure, etc.
-// Los limpiamos y los redefinimos nosotros con utilidades/mt-*, mb-*.
-// -----------------------------------------------------------------------------
+
 
 body,
 h1, h2, h3, h4, h5, h6,
@@ -54,26 +26,18 @@ ul, ol {
 }
 
 
-// -----------------------------------------------------------------------------
-// 3. HTML Y BODY: SCROLL SUAVE Y ALTURA COMPLETA
-// -----------------------------------------------------------------------------
 
 html {
-    // Suaviza el scroll cuando se usan anchors (#seccion). Mejora UX.
     scroll-behavior: smooth;
 
-    // Permite que 1rem == 16px (valor por defecto) sea la base matemática
-    // de todo el framework. No forzamos font-size aquí para respetar la
-    // preferencia de accesibilidad del usuario (zoom del navegador).
+   
     -webkit-text-size-adjust: 100%;
 }
 
 body {
     min-height: 100vh;
 
-    // Colores y tipografía base del tema oscuro. Se definen formalmente
-    // en _typography.scss; aquí solo garantizamos fondo y color correctos
-    // desde el primer render.
+    
     background-color: v.$bg-base;
     color: v.$text-base;
     font-family: v.$font-family-base;
@@ -86,12 +50,7 @@ body {
 }
 
 
-// -----------------------------------------------------------------------------
-// 4. MEDIA RESPONSIVA POR DEFECTO
-// -----------------------------------------------------------------------------
-// Evita que imágenes y videos desborden su contenedor. Esto salva muchísimos
-// layouts rotos en proyectos reales.
-// -----------------------------------------------------------------------------
+
 
 img,
 picture,
@@ -104,13 +63,7 @@ svg {
 }
 
 
-// -----------------------------------------------------------------------------
-// 5. FORMULARIOS: HEREDAR LA TIPOGRAFÍA
-// -----------------------------------------------------------------------------
-// Por defecto, <input>, <button>, <textarea> y <select> NO heredan la fuente
-// del body. Esto causa que los formularios se vean con Arial mientras el
-// resto de la página usa Inter. Lo arreglamos aquí.
-// -----------------------------------------------------------------------------
+
 
 input,
 button,
@@ -121,12 +74,7 @@ select {
 }
 
 
-// -----------------------------------------------------------------------------
-// 6. ENLACES
-// -----------------------------------------------------------------------------
-// Quitamos el subrayado azul horrible por defecto. Los estilos definitivos
-// van en _typography.scss usando el color $primary.
-// -----------------------------------------------------------------------------
+
 
 a {
     color: inherit;
@@ -139,22 +87,13 @@ a {
 }
 
 
-// -----------------------------------------------------------------------------
-// 7. LISTAS SIN VIÑETAS POR DEFECTO
-// -----------------------------------------------------------------------------
-// En un framework moderno, las listas <ul> casi nunca llevan bullet visible
-// (navbars, cards, menús). Si se necesita el bullet, se usa una utilidad.
-// -----------------------------------------------------------------------------
-
 ul,
 ol {
     list-style: none;
 }
 
 
-// -----------------------------------------------------------------------------
-// 8. ELEMENTOS DE TABLA
-// -----------------------------------------------------------------------------
+
 
 table {
     border-collapse: collapse;
@@ -163,13 +102,7 @@ table {
 }
 
 
-// -----------------------------------------------------------------------------
-// 9. ACCESIBILIDAD: RESPETAR PREFERENCIA DE MOVIMIENTO REDUCIDO
-// -----------------------------------------------------------------------------
-// Si el usuario activó "reduce motion" en su sistema operativo (gente con
-// vértigo, epilepsia, TDAH), desactivamos animaciones. Esto es un estándar
-// WCAG 2.1 y muestra madurez profesional.
-// -----------------------------------------------------------------------------
+
 
 @media (prefers-reduced-motion: reduce) {
     *,
@@ -183,12 +116,6 @@ table {
 }
 
 
-// -----------------------------------------------------------------------------
-// 10. FOCO VISIBLE (accesibilidad de teclado)
-// -----------------------------------------------------------------------------
-// Cuando un usuario navega con Tab, debe ver claramente qué elemento está
-// enfocado. Definimos un outline consistente en todo el framework.
-// -----------------------------------------------------------------------------
 
 :focus-visible {
     outline: 2px solid v.$primary;

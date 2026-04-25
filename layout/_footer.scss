@@ -1,0 +1,128 @@
+
+
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+
+// -----------------------------------------------------------------------------
+// 1. CONTENEDOR PRINCIPAL
+// -----------------------------------------------------------------------------
+
+.footer {
+    background-color: v.$bg-surface;
+    border-top: v.$border-width solid v.$border-base;
+    color: v.$text-secundario;
+    padding-top: v.$spacer * 3;
+    padding-bottom: v.$spacer * 1.5;
+    margin-top: v.$spacer * 3;
+
+
+    // -------------------------------------------------------------------------
+    // 2. TÍTULOS DE COLUMNAS
+    // -------------------------------------------------------------------------
+    .footer-title {
+        font-family: v.$font-family-heading;
+        font-size: v.$font-size-base;
+        font-weight: v.$font-weight-bold;
+        color: v.$text-base;
+        margin-bottom: v.$spacer;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+
+    // -------------------------------------------------------------------------
+    // 3. LISTAS DE ENLACES
+    // -------------------------------------------------------------------------
+    .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            margin-bottom: v.$spacer * 0.5;
+        }
+
+        a {
+            color: v.$text-secundario;
+            text-decoration: none;
+            @include m.smooth-transition(color);
+
+            &:hover {
+                color: v.$primary;
+            }
+        }
+    }
+
+
+    // -------------------------------------------------------------------------
+    // 4. REDES SOCIALES (iconos en línea)
+    // -------------------------------------------------------------------------
+    .footer-social {
+        display: flex;
+        gap: v.$spacer;
+        margin-top: v.$spacer;
+
+        a {
+            @include m.flex-center;
+            width: 40px;
+            height: 40px;
+            background-color: v.$bg-base;
+            border: v.$border-width solid v.$border-base;
+            border-radius: v.$border-radius-pill;
+            color: v.$text-secundario;
+            @include m.smooth-transition(all, 0.3s);
+
+            &:hover {
+                background-color: v.$primary;
+                border-color: v.$primary;
+                color: v.$bg-base;
+                transform: translateY(-2px);
+            }
+        }
+    }
+
+
+    // -------------------------------------------------------------------------
+    // 5. BARRA INFERIOR (copyright)
+    // -------------------------------------------------------------------------
+    .footer-bottom {
+        border-top: v.$border-width solid v.$border-base;
+        margin-top: v.$spacer * 2;
+        padding-top: v.$spacer * 1.25;
+        text-align: center;
+        font-size: v.$font-size-sm;
+        color: v.$text-secundario;
+
+        // En tablet+, permitimos partir el copyright en 2 columnas
+        // (izq: copyright, der: "hecho con ♥")
+        @include m.respond-to('md') {
+            @include m.flex-between;
+            text-align: left;
+        }
+
+        p {
+            margin: 0;
+        }
+    }
+}
+
+
+// -----------------------------------------------------------------------------
+// 6. VARIANTE COMPACTA
+// -----------------------------------------------------------------------------
+// Footer mínimo de una sola línea para dashboards o apps internas donde no
+// queremos que ocupe mucho espacio.
+// -----------------------------------------------------------------------------
+
+.footer--compact {
+    padding-top: v.$spacer;
+    padding-bottom: v.$spacer;
+    margin-top: 0;
+
+    .footer-bottom {
+        border-top: none;
+        margin-top: 0;
+        padding-top: 0;
+    }
+}

@@ -1,0 +1,162 @@
+
+
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+@use 'sass:map';
+
+
+
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: v.$font-family-heading;
+    font-weight: v.$font-weight-bold;
+    line-height: 1.2;                    // títulos más ajustados que texto
+    color: v.$text-base;
+    margin-bottom: v.$spacer * 0.75;     // 12px debajo de cada título
+    letter-spacing: -0.01em;             // levemente más compacto (estilo dashboard)
+}
+
+// Asignación de tamaños desde el mapa
+@each $level, $size in v.$font-sizes {
+    h#{$level} {
+        font-size: $size;
+    }
+}
+
+h1 {
+    @include m.respond-below('md') {
+        font-size: map.get(v.$font-sizes, 2);   // en móvil h1 se iguala a h2
+    }
+}
+
+
+
+
+p {
+    margin-bottom: v.$spacer;            // 16px entre párrafos
+    line-height: v.$line-height-base;    // 1.5 para buena legibilidad
+    color: v.$text-base;
+
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+// Texto secundario: para descripciones, metadatos, subtítulos discretos.
+small,
+.text-muted {
+    font-size: v.$font-size-sm;
+    color: v.$text-secundario;
+}
+
+// Énfasis fuerte y tenue
+strong, b {
+    font-weight: v.$font-weight-bold;
+    color: v.$text-base;
+}
+
+em, i {
+    font-style: italic;
+}
+
+
+
+
+a {
+    color: v.$primary;
+    @include m.smooth-transition(color);
+
+    &:hover {
+        color: darken(v.$primary, 10%);
+        text-decoration: underline;
+    }
+
+    &:focus-visible {
+        // El reset ya lo maneja, pero reafirmamos contraste.
+        outline-color: v.$primary;
+    }
+}
+
+
+
+
+.list-styled {
+    padding-left: v.$spacer * 1.5;
+    margin-bottom: v.$spacer;
+
+    &.list-styled--disc  { list-style: disc; }
+    &.list-styled--num   { list-style: decimal; }
+
+    li {
+        margin-bottom: v.$spacer * 0.25;
+    }
+}
+
+
+// -----------------------------------------------------------------------------
+// 5. CITAS
+// -----------------------------------------------------------------------------
+
+blockquote {
+    margin: v.$spacer 0;
+    padding-left: v.$spacer;
+    border-left: 4px solid v.$primary;
+    color: v.$text-secundario;
+    font-style: italic;
+}
+
+
+
+
+code,
+kbd,
+samp,
+pre {
+    font-family: "Fira Code", "Consolas", "Courier New", monospace;
+    font-size: 0.9em;
+}
+
+
+code {
+    padding: 0.15em 0.4em;
+    background-color: v.$bg-surface;
+    color: v.$primary;
+    border-radius: v.$border-radius-sm;
+    border: v.$border-width solid v.$border-base;
+}
+
+
+pre {
+    display: block;
+    padding: v.$spacer;
+    margin-bottom: v.$spacer;
+    background-color: v.$bg-surface;
+    border: v.$border-width solid v.$border-base;
+    border-radius: v.$border-radius;
+    overflow-x: auto;                   
+    line-height: 1.5;
+
+    code {
+        padding: 0;
+        background: transparent;
+        border: none;
+        color: v.$text-base;
+    }
+}
+
+
+
+hr {
+    border: 0;
+    border-top: v.$border-width solid v.$border-base;
+    margin: v.$spacer * 1.5 0;
+}
+
+
+
+
+::selection {
+    background-color: v.$primary;
+    color: v.$bg-base;
+}

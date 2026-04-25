@@ -1,0 +1,128 @@
+
+
+@use '../abstracts/variables' as v;
+
+
+
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+
+
+body,
+h1, h2, h3, h4, h5, h6,
+p,
+figure,
+blockquote,
+dl, dd,
+ul, ol {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+html {
+    scroll-behavior: smooth;
+
+   
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    min-height: 100vh;
+
+    
+    background-color: v.$bg-base;
+    color: v.$text-base;
+    font-family: v.$font-family-base;
+    font-size: v.$font-size-base;
+    line-height: v.$line-height-base;
+
+    // Suaviza el renderizado de texto en WebKit (Safari, Chrome macOS).
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+
+
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+    color: inherit;
+}
+
+
+
+
+a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+        text-decoration: none;
+    }
+}
+
+
+ul,
+ol {
+    list-style: none;
+}
+
+
+
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+
+
+
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
+
+:focus-visible {
+    outline: 2px solid v.$primary;
+    outline-offset: 2px;
+}
+
+// Quitamos el outline solo para click de ratón (no para teclado).
+:focus:not(:focus-visible) {
+    outline: none;
+}

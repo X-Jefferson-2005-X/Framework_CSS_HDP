@@ -1,6 +1,7 @@
 @use 'variables' as v;
 @use 'sass:map';
 @use 'sass:math';
+@use 'sass:color';
 // SISTEMA RESPONSIVO (Layout & Grid)
 
 // Mobile First: aplica estilos DESDE el breakpoint indicado hacia arriba
@@ -85,12 +86,17 @@
 
 @mixin btn-solid($bg, $text: v.$bg-base) {
     background-color: $bg;
-    color: $text;
     border: 2px solid $bg;
 
+    @if color.lightness($bg) > 40%{
+        color: v.$bg-base; // texto oscuro para fondos claros
+    } @else {
+        color: v.$text-base; // texto claro para fondos oscuros
+    }
+
     &:hover:not(:disabled) {
-        background-color: darken($bg, 12%);
-        border-color: darken($bg, 12%);
+        background-color: color.adjust($bg, $lightness: 12%);
+        border-color: color.adjust($bg, $lightness: -12%);
     }
 
     &:active:not(:disabled) {
@@ -143,7 +149,7 @@
     color: $text;
 
     a {
-        color: darken($text, 10%);
+        color: color.adjust($text, $lightness: 10%);
         text-decoration: underline;
     }
 }

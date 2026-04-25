@@ -1,21 +1,21 @@
 // Paleta de Colores
 // Colores de Marca
-$primary: #2dd4bf;
-$secondary: #cebfac;
+$primary: #d62828;     // Rojo fuego 
+$secondary: #ff6a00;   // Naranja 
 
 // Colores Semanticos
-$success: #34d399;
-$danger: #ef4444;
-$warning: #fbbf24;
-$info: #38bdf8;
+$success: #22c55e;
+$danger: #e11d48;
+$warning: #f59e0b;
+$info: #3b82f6;
 
 // Escala de Grises
 $white: #ffffff;
-$bg-surface: #1e293b; // Fondo de tarjetas/secciones
-$border-base: #334155; // Bordes y líneas divisorias
-$text-secundario: #94a3b8; // Texto secundario
-$text-base: #f8fafc; // Texto principal (blanco roto)
-$bg-base: #0f172a; // Fondo base de la pagina
+$bg-surface: #1f1f1f;     // Fondo tarjetas oscuro
+$border-base: #3a3a3a;    // Bordes metalicos
+$text-secundario: #9ca3af;
+$text-base: #f3f4f6;
+$bg-base: #0f0f0f;        // Fondo principal estilo arena de combate
 
 // Mapa de colores para iteracion @each en utilidades y comnponentes
 $colors: (
@@ -25,10 +25,10 @@ $colors: (
   "danger": $danger,
   "warning": $warning,
   "info": $info,
-  "light": $gray-900,
-  "dark": $black,
+  "light": $text-base,
+  "dark": $bg-base,
 );
-// Tipografía
+// Tipografia
 $font-family-base: "Inter", sans-serif, system-ui;
 $font-family-heading: "Montserrat", system-ui, sans-serif;
 
@@ -102,7 +102,7 @@ $border-radius-pill: 50rem; // Para bordes completamente redondeados
 
 //bordes y sombras
 $border-width: 1px; // Ancho estandar para bordes
-$border-color: $gray-300; // Color estandar para bordes
+$border-color: $border-base; // Color estandar para bordes
 
 $shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.15); // Sombra ligera para elementos pequeños
 $shadow:

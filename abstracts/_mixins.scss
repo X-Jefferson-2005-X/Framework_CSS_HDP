@@ -88,7 +88,7 @@
     background-color: $bg;
     border: 2px solid $bg;
 
-    @if color.lightness($bg) > 40%{
+    @if color.channel($bg, 'lightness', $space: hsl) > 40%{
         color: v.$bg-base; // texto oscuro para fondos claros
     } @else {
         color: v.$text-base; // texto claro para fondos oscuros

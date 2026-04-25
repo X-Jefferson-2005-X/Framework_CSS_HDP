@@ -1,5 +1,6 @@
 @use '../abstracts/variables' as v;
 @use '../abstracts/mixins' as m;
+@use 'sass:color';
 
 
 // ESTRUCTURA BASE
@@ -37,7 +38,7 @@
 @each $name, $color in v.$colors {
     .badge--#{$name} {
         background-color: $color;
-        @if color.lightness($color) > 40%{
+        @if color.channel($color, 'lightness', $space: hsl) > 40%{
         color: v.$bg-base; // texto oscuro para fondos claros
         } @else {
         color: v.$text-base; // texto claro para fondos oscuros

@@ -28,7 +28,7 @@
 
 
 
-%col-base {
+@mixin col-base {
     position: relative;
     width: 100%;                                         
     padding-right: math.div(v.$grid-gutter, 2);
@@ -39,20 +39,20 @@
 
 
 .col {
-    @extend %col-base;
+    @include col-base;
     flex: 1 0 0%;
 }
 
 
 .col-auto {
-    @extend %col-base;
+    @include col-base;
     @include m.make-col-auto;
 }
 
 
 @for $i from 1 through v.$grid-columns {
     .col-#{$i} {
-        @extend %col-base;
+        @include col-base;
         @include m.make-col($i, v.$grid-columns);
     }
 }
@@ -64,18 +64,18 @@
     @include m.respond-to($bp) {
 
         .col-#{$bp} {
-            @extend %col-base;
+            @include col-base;
             flex: 1 0 0%;
         }
 
         .col-#{$bp}-auto {
-            @extend %col-base;
+            @include col-base;
             @include m.make-col-auto;
         }
 
         @for $i from 1 through v.$grid-columns {
             .col-#{$bp}-#{$i} {
-                @extend %col-base;
+                @include col-base;
                 @include m.make-col($i, v.$grid-columns);
             }
         }
@@ -87,11 +87,8 @@
 
 @for $i from 0 through (v.$grid-columns - 1) {
     .offset-#{$i} {
-        margin-left: if(
-            $i == 0,
-            0,
-            math.percentage(math.div($i, v.$grid-columns))
-        );
+        margin-left: if(sass($i == 0): 0;
+        else: math.percentage(math.div($i, v.$grid-columns)));
     }
 }
 
@@ -99,11 +96,8 @@
     @include m.respond-to($bp) {
         @for $i from 0 through (v.$grid-columns - 1) {
             .offset-#{$bp}-#{$i} {
-                margin-left: if(
-                    $i == 0,
-                    0,
-                    math.percentage(math.div($i, v.$grid-columns))
-                );
+                margin-left: if(sass($i == 0): 0;
+                else: math.percentage(math.div($i, v.$grid-columns)));
             }
         }
     }

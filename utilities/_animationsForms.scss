@@ -1,0 +1,66 @@
+.form-control {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    &:focus {
+        outline: none; 
+        border-color: #d62828; 
+        transform: translateY(-2px); // Se eleva hacia el usuario
+        // Brillo exterior intenso
+        box-shadow: 0 4px 15px rgba(214, 40, 40, 0.15), 0 0 0 3px rgba(214, 40, 40, 0.2); 
+    }
+}
+
+// 2. RETROCESO Temblor para inputs invalidos
+@keyframes input-recoil {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px) rotate(-0.5deg); }
+    75% { transform: translateX(4px) rotate(0.5deg); }
+}
+
+.form-control.is-invalid {
+    border-color: #ef4444; // Rojo error
+    animation: input-recoil 0.3s ease-in-out; // Tiembla al aparecer el error
+
+    &:focus {
+        border-color: #ef4444;
+        box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.3); 
+        transform: translateY(-2px);
+    }
+}
+
+// Validacion de exito
+.form-control.is-valid {
+    border-color: #10b981; // Verde exito
+    
+    &:focus {
+        border-color: #10b981;
+        box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3); // Brillo verde
+        transform: translateY(-2px);
+    }
+}
+
+// Checkboxes y Radio buttons
+@keyframes check-burst {
+    0% { transform: scale(0.5); }
+    50% { transform: scale(1.2); } // Crece un poco mas de su tamaño
+    100% { transform: scale(1); } // Regresa a su tamaño original
+}
+
+.form-check {
+    input[type="checkbox"],
+    input[type="radio"] {
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:checked {
+            animation: check-burst 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background-color: #d62828; 
+            border-color: #d62828;
+            box-shadow: 0 0 10px rgba(214, 40, 40, 0.4);
+        }
+
+        &:focus {
+            box-shadow: 0 0 0 3px rgba(214, 40, 40, 0.25);
+        }
+    }
+}

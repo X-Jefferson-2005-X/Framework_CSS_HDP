@@ -1,0 +1,43 @@
+.navbar__link {
+    position: relative;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    // La linea base (oculta)
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #d62828, transparent);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transform: translateX(-50%);
+    }
+
+    &:hover {
+        color: #d62828 !important;
+        &::after {
+            width: 100%; 
+            box-shadow: 0 0 10px #d62828;
+        }
+    }
+
+    // Estado activo 
+    &.active {
+        color: #d62828 !important;
+        &::after {
+            width: 80%;
+            height: 3px;
+            background: #d62828;
+        }
+    }
+}
+
+// Logo con brillo al pasar el mouse
+.navbar__logo:hover {
+    filter: drop-shadow(0 0 8px rgba(214, 40, 40, 0.8));
+    transform: rotate(-2deg) scale(1.05);
+    transition: all 0.3s ease;
+}

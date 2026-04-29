@@ -1,10 +1,6 @@
-
-
 @use '../abstracts/variables' as v;
 @use '../abstracts/mixins' as m;
-
-
-
+@use "sass:color";
 
 .navbar {
     background-color: v.$bg-surface;
@@ -14,15 +10,12 @@
     position: relative;
     z-index: v.$zindex-sticky;
 
- 
     > .container,
     > .container-fluid {
         @include m.flex-between;
         flex-wrap: wrap;
     }
 
-
-  
     .navbar-brand {
         font-family: v.$font-family-heading;
         font-size: v.$font-size-lg;
@@ -32,12 +25,10 @@
         @include m.smooth-transition(color);
 
         &:hover {
-            color: darken(v.$primary, 10%);
+            color: color.adjust(v.$primary, $lightness: -10%);
         }
     }
 
-
-    
     .navbar-toggle {
         display: flex;
         flex-direction: column;
@@ -58,14 +49,11 @@
             @include m.smooth-transition(transform);
         }
 
-       
         @include m.respond-to('md') {
             display: none;
         }
     }
 
-
-  
     .navbar-menu {
         
         display: none;
@@ -79,7 +67,6 @@
             display: flex;
         }
 
-       
         @include m.respond-to('md') {
             display: flex;
             flex-direction: row;
@@ -89,7 +76,7 @@
         }
 
         li {
-            // En móvil, cada enlace ocupa una línea completa
+            // En movil, cada enlace ocupa una linea completa
             @include m.respond-below('md') {
                 border-bottom: v.$border-width solid v.$border-base;
             }
@@ -109,7 +96,6 @@
             color: v.$primary;
         }
 
-       
         &.navbar-link--active {
             color: v.$primary;
             font-weight: v.$font-weight-bold;

@@ -13,9 +13,20 @@
 @use 'components/cards';
 @use 'components/alerts';
 @use 'components/forms';
-@use 'components/navbar';
+@use 'layout/navbar';
 @use 'components/badges';
 @use 'components/tables';
+@use 'layout/footer';
+@use 'layout/container';
+@use 'layout/header';
+
 
 // 5. Utilities Clases de un solo proposito
 @use 'utilities/helpers';
+@use 'utilities/animationsButtons';
+@use 'utilities/animationsCards';
+@use 'utilities/animationsAlerts';
+@use 'utilities/animationsForms';
+@use 'utilities/animationsTables';
+@use 'utilities/animationsBadges';
+@use 'utilities/animationsNavbars';

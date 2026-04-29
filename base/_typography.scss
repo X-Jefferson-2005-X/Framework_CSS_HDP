@@ -1,11 +1,6 @@
-
-
 @use '../abstracts/variables' as v;
 @use '../abstracts/mixins' as m;
 @use 'sass:map';
-
-
-
 
 h1, h2, h3, h4, h5, h6 {
     font-family: v.$font-family-heading;
@@ -29,9 +24,6 @@ h1 {
     }
 }
 
-
-
-
 p {
     margin-bottom: v.$spacer;            // 16px entre párrafos
     line-height: v.$line-height-base;    // 1.5 para buena legibilidad
@@ -50,7 +42,7 @@ small,
     color: v.$text-secundario;
 }
 
-// Énfasis fuerte y tenue
+// Enfasis fuerte y tenue
 strong, b {
     font-weight: v.$font-weight-bold;
     color: v.$text-base;
@@ -92,11 +84,6 @@ a {
         margin-bottom: v.$spacer * 0.25;
     }
 }
-
-
-// -----------------------------------------------------------------------------
-// 5. CITAS
-// -----------------------------------------------------------------------------
 
 blockquote {
     margin: v.$spacer 0;

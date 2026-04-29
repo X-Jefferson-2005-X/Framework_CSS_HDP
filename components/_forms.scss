@@ -1,7 +1,6 @@
 @use '../abstracts/variables' as v;
 @use '../abstracts/mixins' as m;
 
-
 // ETIQUETA DE INPUT
 
 .form-label {
@@ -14,9 +13,7 @@
     color: v.$text-base;
 }
 
-
 // CONTENEDOR DE GRUPO DE INPUT (label + input + mensaje)
-
 .form-group {
     margin-bottom: v.$spacer;
 }
@@ -73,7 +70,6 @@
 
 
 // CHECKBOX Y RADIO
-
 .form-check {
     display: flex;
     align-items: center;

@@ -1,9 +1,6 @@
 @use '../abstracts/variables' as v;
 @use '../abstracts/mixins' as m;
 
-
-// CONTENEDOR BASE
-
 .card {
     display: flex;
     flex-direction: column;

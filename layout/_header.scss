@@ -1,0 +1,112 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.header {
+    width: 100%;
+    background-color: v.$bg-surface;
+    border-bottom: 2px solid v.$primary;
+
+    padding-top: v.$spacer * 2;
+    padding-bottom: v.$spacer * 2;
+
+    // Sombra ligera para elevarlo sobre el contenido que viene debajo
+    @include m.shadow('sm');
+
+    &__container {
+        @include m.flex-between;
+
+        max-width: 1200px;
+        width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+        padding-right: v.$spacer * 1.5;
+        padding-left: v.$spacer * 1.5;
+        gap: v.$spacer * 1.5;
+
+        // EN MOVIL (por debajo de sm = 576px):
+        @include m.respond-below('sm') {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: v.$spacer * 0.35; 
+    }
+
+
+    &__title {
+        font-family: v.$font-family-heading;
+        font-size: 2rem;           // equivale a aprox fs-2 del sistema
+        font-weight: v.$font-weight-bold;
+        line-height: 1.2;
+        color: v.$text-base;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+
+        // En movil el titulo baja un poco de tamaño para que no se parta raro
+        @include m.respond-below('sm') {
+            font-size: 1.5rem;
+        }
+    }
+
+    &__accent {
+        color: v.$primary;
+
+        // Un subrayado decorativo en rojo bajo la palabra de acento
+        text-decoration: underline;
+        text-decoration-color: v.$primary;
+        text-underline-offset: 4px;
+        text-decoration-thickness: 2px;
+    }
+
+    &__subtitle {
+        font-family: v.$font-family-base;
+        font-size: v.$font-size-base;
+        font-weight: v.$font-weight-normal;
+        color: v.$text-secundario;
+        margin: 0;
+        line-height: v.$line-height-base;
+
+        @include m.respond-below('sm') {
+            font-size: v.$font-size-sm;
+        }
+    }
+
+
+    &__actions {
+        display: flex;
+        align-items: center;
+        gap: v.$spacer * 0.75;
+        flex-shrink: 0; // evita que los botones se achiquen si el titulo es largo
+
+        // En movil los botones se apilan en columna y ocupan todo el ancho
+        @include m.respond-below('sm') {
+            flex-direction: column;
+            width: 100%;
+        }
+    }
+}
+
+@include m.respond-below('sm') {
+    .header__actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+.header--sticky {
+    position: sticky;
+    top: 0;
+    z-index: v.$zindex-sticky;
+    @include m.shadow('md');
+}
+
+.header--compact {
+    padding-top: v.$spacer;
+    padding-bottom: v.$spacer;
+}

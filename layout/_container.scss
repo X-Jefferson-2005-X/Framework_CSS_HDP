@@ -1,11 +1,7 @@
-
 @use '../abstracts/variables' as v;
 @use '../abstracts/mixins' as m;
 @use 'sass:math';
 @use 'sass:map';
-
-
-
 
 %container-base {
     width: 100%;
@@ -16,15 +12,9 @@
     box-sizing: border-box;
 }
 
-
-
-
 .container-fluid {
     @extend %container-base;
 }
-
-
-
 
 .container {
     @extend %container-base;
@@ -36,9 +26,6 @@
     }
 }
 
-
-
-
 @each $bp, $max-width in v.$container-max-widths {
     .container-#{$bp} {
         @extend %container-base;
@@ -48,9 +35,6 @@
         }
     }
 }
-
-
-
 
 .container-narrow {
     @extend %container-base;

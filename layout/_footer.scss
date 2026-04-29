@@ -1,12 +1,5 @@
-
-
 @use '../abstracts/variables' as v;
 @use '../abstracts/mixins' as m;
-
-
-// -----------------------------------------------------------------------------
-// 1. CONTENEDOR PRINCIPAL
-// -----------------------------------------------------------------------------
 
 .footer {
     background-color: v.$bg-surface;
@@ -16,10 +9,6 @@
     padding-bottom: v.$spacer * 1.5;
     margin-top: v.$spacer * 3;
 
-
-    // -------------------------------------------------------------------------
-    // 2. TÍTULOS DE COLUMNAS
-    // -------------------------------------------------------------------------
     .footer-title {
         font-family: v.$font-family-heading;
         font-size: v.$font-size-base;
@@ -31,9 +20,6 @@
     }
 
 
-    // -------------------------------------------------------------------------
-    // 3. LISTAS DE ENLACES
-    // -------------------------------------------------------------------------
     .footer-links {
         list-style: none;
         padding: 0;
@@ -55,9 +41,6 @@
     }
 
 
-    // -------------------------------------------------------------------------
-    // 4. REDES SOCIALES (iconos en línea)
-    // -------------------------------------------------------------------------
     .footer-social {
         display: flex;
         gap: v.$spacer;
@@ -83,9 +66,6 @@
     }
 
 
-    // -------------------------------------------------------------------------
-    // 5. BARRA INFERIOR (copyright)
-    // -------------------------------------------------------------------------
     .footer-bottom {
         border-top: v.$border-width solid v.$border-base;
         margin-top: v.$spacer * 2;
@@ -94,8 +74,6 @@
         font-size: v.$font-size-sm;
         color: v.$text-secundario;
 
-        // En tablet+, permitimos partir el copyright en 2 columnas
-        // (izq: copyright, der: "hecho con ♥")
         @include m.respond-to('md') {
             @include m.flex-between;
             text-align: left;
@@ -107,13 +85,8 @@
     }
 }
 
-
-// -----------------------------------------------------------------------------
-// 6. VARIANTE COMPACTA
-// -----------------------------------------------------------------------------
-// Footer mínimo de una sola línea para dashboards o apps internas donde no
-// queremos que ocupe mucho espacio.
-// -----------------------------------------------------------------------------
+// Footer minimo de una sola linea para dashboards o apps internas donde no
+// queremos que ocupe mucho espacio
 
 .footer--compact {
     padding-top: v.$spacer;

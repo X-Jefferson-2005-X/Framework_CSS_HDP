@@ -1,11 +1,6 @@
-
-
 @use '../abstracts/variables' as v;
 @use '../abstracts/mixins' as m;
 @use 'sass:math';
-
-
-
 
 .row {
     display: flex;
@@ -57,9 +52,6 @@
     }
 }
 
-
-
-
 @each $bp, $width in v.$breakpoints {
     @include m.respond-to($bp) {
 
@@ -82,9 +74,6 @@
     }
 }
 
-
-
-
 @for $i from 0 through (v.$grid-columns - 1) {
     .offset-#{$i} {
         margin-left: if(sass($i == 0): 0;
@@ -102,9 +91,6 @@
         }
     }
 }
-
-
-
 
 .order-first { order: -1; }
 .order-last  { order: 13; }

@@ -1,0 +1,188 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+// Tipografia
+
+// Tamaños de fuente
+// Genera: .fs-1, .fs-2, .fs-3, .fs-4, .fs-5, .fs-6
+@each $size, $value in v.$font-sizes {
+    .fs-#{$size} {
+        font-size: $value;
+        line-height: 1.2;
+    }
+}
+
+// Peso de fuente
+.fw-light  { font-weight: v.$font-weight-light; }
+.fw-normal { font-weight: v.$font-weight-normal; }
+.fw-bold   { font-weight: v.$font-weight-bold; }
+
+// Alineacion de texto
+.text-start   { text-align: start; }
+.text-center  { text-align: center; }
+.text-end     { text-align: end; }
+.text-justify { text-align: justify; }
+
+// Margenes
+// Todos los lados --> .m-0  a .m-5
+// Superior --> .mt-0 a .mt-5
+// Inferior --> .mb-0 a .mb-5
+// Izquierdo (start) --> .ms-0 a .ms-5
+// Derecho  (end) --> .me-0 a .me-5
+// Horizontal --> .mx-0 a .mx-5
+// Vertical --> .my-0 a .my-5
+
+@each $num, $value in v.$spacers {
+    .m-#{$num}  { margin: $value; }
+    .mt-#{$num} { margin-top: $value; }
+    .mb-#{$num} { margin-bottom: $value; }
+    .ms-#{$num} { margin-left: $value; }
+    .me-#{$num} { margin-right: $value; }
+    .mx-#{$num} { margin-left: $value; margin-right: $value; }
+    .my-#{$num} { margin-top: $value;  margin-bottom: $value; }
+}
+
+// Paddings
+
+// Todos los lados --> .p-0  a .p-5
+// Superior --> .pt-0 a .pt-5
+// Inferior --> .pb-0 a .pb-5
+// Izquierdo (start) --> .ps-0 a .ps-5
+// Derecho  (end) --> .pe-0 a .pe-5
+// Horizontal --> .px-0 a .px-5
+// Vertical --> .py-0 a .py-5
+
+@each $num, $value in v.$spacers {
+    .p-#{$num}  { padding: $value; }
+    .pt-#{$num} { padding-top: $value; }
+    .pb-#{$num} { padding-bottom: $value; }
+    .ps-#{$num} { padding-left: $value; }
+    .pe-#{$num} { padding-right: $value; }
+    .px-#{$num} { padding-left: $value; padding-right: $value; }
+    .py-#{$num} { padding-top: $value;  padding-bottom: $value; }
+}
+
+// Colores y textos de fondo
+
+@each $name, $color in v.$colors {
+    .text-#{$name} {
+        color: $color;
+    }
+}
+
+// Colores de texto adicionales
+.text-muted{ 
+    color: v.$text-secundario; 
+}
+.text-white{ 
+    color: v.$white; 
+}
+
+
+// Colores y fondo
+
+@each $name, $color in v.$colors {
+    .bg-#{$name} {
+        background-color: $color;
+    }
+}
+
+// Fondos adicionales
+.bg-white { background-color: v.$white; }
+.bg-muted { background-color: v.$text-secundario; }
+
+// Flebox
+// Activar flex
+.d-flex { display: flex; }
+
+// Direccion
+.flex-row    { flex-direction: row; }
+.flex-column { flex-direction: column; }
+
+// Wrap
+.flex-wrap   { flex-wrap: wrap; }
+.flex-nowrap { flex-wrap: nowrap; }
+
+// Crecimiento y encogimiento
+.flex-grow-1   { flex-grow: 1; }
+.flex-shrink-1 { flex-shrink: 1; }
+
+// Eje principal (justify-content)
+.justify-content-start   { justify-content: flex-start; }
+.justify-content-center  { justify-content: center; }
+.justify-content-end     { justify-content: flex-end; }
+.justify-content-between { justify-content: space-between; }
+.justify-content-around  { justify-content: space-around; }
+.justify-content-evenly  { justify-content: space-evenly; }
+
+// Eje secundario (align-items)
+.align-items-start    { align-items: flex-start; }
+.align-items-center   { align-items: center; }
+.align-items-end      { align-items: flex-end; }
+.align-items-stretch  { align-items: stretch; }
+.align-items-baseline { align-items: baseline; }
+
+// Gap entre items — genera .gap-0 a .gap-5
+@each $num, $value in v.$spacers {
+    .gap-#{$num} {
+        gap: $value;
+    }
+}
+
+// Display base (aplica en todos los tamaños)
+.d-block        { display: block; }
+.d-inline       { display: inline; }
+.d-inline-block { display: inline-block; }
+.d-none         { display: none; }
+
+// Display responsivo tablet+ → @media (min-width: 768px)
+@include m.respond-to('md') {
+    .d-md-block        { display: block; }
+    .d-md-inline       { display: inline; }
+    .d-md-inline-block { display: inline-block; }
+    .d-md-none         { display: none; }
+    .d-md-flex         { display: flex; }
+}
+
+// Display responsivo desktop y @media (min-width: 992px)
+@include m.respond-to('lg') {
+    .d-lg-block        { display: block; }
+    .d-lg-inline       { display: inline; }
+    .d-lg-inline-block { display: inline-block; }
+    .d-lg-none         { display: none; }
+    .d-lg-flex         { display: flex; }
+}
+
+
+// Bordes y sombras 
+
+// Redondeo de bordes
+.rounded{ 
+    border-radius: v.$border-radius; 
+}
+.rounded-sm{ 
+    border-radius: v.$border-radius-sm; 
+}
+.rounded-lg{ 
+    border-radius: v.$border-radius-lg; 
+}
+.rounded-pill{ 
+    border-radius: v.$border-radius-pill; 
+}
+.rounded-0{ 
+    border-radius: 0; 
+}
+
+// Sombras — usando el mixin shadow()
+.shadow-sm{ 
+    @include m.shadow('sm'); 
+}
+.shadow{
+    @include m.shadow('md'); 
+}
+.shadow-lg{ 
+    @include m.shadow('lg'); 
+}
+.shadow-none{
+    box-shadow: none; 
+}

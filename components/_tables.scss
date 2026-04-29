@@ -1,0 +1,147 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+@use 'sass:color';
+
+
+// CONTENEDOR RESPONSIVO
+// Evita que la tabla rompa el diseño en pantallas pequeñas
+// El usuario puede hacer scroll horizontal sin que el resto
+// de la pagina se vea afectado
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+
+    // scroll suave en movil
+    -webkit-overflow-scrolling: touch;
+
+    // sombra interior a la derecha avisa al usuario
+    // que hay mas contenido deslizando
+    background:
+        linear-gradient(to right, v.$bg-surface 30%, transparent),
+        linear-gradient(to left,  v.$bg-surface 30%, transparent) right,
+        radial-gradient(farthest-side at 0 50%, rgba(0,0,0,0.35), transparent),
+        radial-gradient(farthest-side at 100% 50%, rgba(0,0,0,0.35), transparent) right;
+
+    background-repeat: no-repeat;
+    background-size: 40px 100%, 40px 100%, 14px 100%, 14px 100%;
+    background-attachment: local, local, scroll, scroll;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse; // junta los bordes de las celdas
+    font-family: v.$font-family-base;
+    font-size: v.$font-size-base;
+    color: v.$text-base;
+    background-color: v.$bg-surface;
+    border-radius: v.$border-radius;
+
+    &__thead {
+        background-color: v.$bg-base; // fondo mas oscuro que el body
+
+        th {
+            padding: 0.85rem 1rem;
+            font-family: v.$font-family-heading;
+            font-weight: v.$font-weight-bold;
+            font-size: v.$font-size-sm;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: v.$text-base;
+            text-align: left;
+            white-space: nowrap;
+
+            // La linea inferior de acento en rojo es la firma visual del componente
+            border-bottom: 2px solid v.$primary;
+        }
+    }
+
+    &__tbody {
+
+        tr {
+            border-bottom: 1px solid v.$border-base;
+            @include m.smooth-transition(background-color, 0.15s);
+
+            // La ultima fila no necesita borde inferior
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+
+        td {
+            padding: 0.75rem 1rem;
+            color: v.$text-secundario;
+            vertical-align: middle;
+
+            .badge,
+            .btn {
+                vertical-align: middle;
+            }
+        }
+    }
+}
+
+
+// MODIFICADOR: STRIPED (filas alternadas)
+// Agrega un fondo ligeramente diferente a las filas pares
+
+.table--striped {
+
+    .table__tbody {
+
+        tr:nth-child(even) {
+            background-color: color.adjust(v.$bg-surface, $lightness: 3%);
+        }
+    }
+}
+
+
+// MODIFICADOR: HOVER (iluminacion al pasar el mouse)
+.table--hover {
+
+    .table__tbody {
+
+        tr {
+            &:hover {
+                background-color: color.adjust(v.$bg-surface, $lightness: 6%);
+                cursor: default;
+
+                td {
+                    color: v.$text-base;
+                }
+            }
+        }
+    }
+}
+
+
+// MODIFICADOR: BORDERED (bordes en todas las celdas)
+// Para tablas con muchos datos donde los bordes ayudan a leer
+
+.table--bordered {
+
+    border: 1px solid v.$border-base;
+
+    .table__thead th,
+    .table__tbody td {
+        border: 1px solid v.$border-base;
+    }
+
+    .table__thead th {
+        border-bottom: 2px solid v.$primary;
+    }
+}
+
+
+// MODIFICADOR: COMPACT (menos padding para muchos datos)
+
+.table--compact {
+
+    .table__thead th {
+        padding: 0.5rem 0.75rem;
+    }
+
+    .table__tbody td {
+        padding: 0.4rem 0.75rem;
+    }
+}

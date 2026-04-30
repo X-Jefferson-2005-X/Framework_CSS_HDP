@@ -4,6 +4,7 @@
 
 // 2. Base (Reseteos globales)
 @use 'base/reset';
+@use 'base/typography';
 
 // 3. Layout (Estructura de rejilla)
 @use 'layout/grid';
@@ -22,7 +23,6 @@
 
 
 // 5. Utilities Clases de un solo proposito
-@use 'utilities/helpers';
 @use 'utilities/animationsButtons';
 @use 'utilities/animationsCards';
 @use 'utilities/animationsAlerts';
@@ -30,3 +30,9 @@
 @use 'utilities/animationsTables';
 @use 'utilities/animationsBadges';
 @use 'utilities/animationsNavbars';
+@use 'utilities/fixedSidebar';
+@use 'utilities/typographyStyles';
+@use 'utilities/spacing';
+@use 'utilities/colors';
+@use 'utilities/flexbox';
+@use 'utilities/borders';

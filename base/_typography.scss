@@ -1,11 +1,12 @@
 @use '../abstracts/variables' as v;
 @use '../abstracts/mixins' as m;
 @use 'sass:map';
+@use 'sass:color';
 
 h1, h2, h3, h4, h5, h6 {
     font-family: v.$font-family-heading;
     font-weight: v.$font-weight-bold;
-    line-height: 1.2;                    // títulos más ajustados que texto
+    line-height: 1.2;                    // titulos mas ajustados que texto
     color: v.$text-base;
     margin-bottom: v.$spacer * 0.75;     // 12px debajo de cada título
     letter-spacing: -0.01em;             // levemente más compacto (estilo dashboard)
@@ -36,8 +37,7 @@ p {
 }
 
 // Texto secundario: para descripciones, metadatos, subtítulos discretos.
-small,
-.text-muted {
+small {
     font-size: v.$font-size-sm;
     color: v.$text-secundario;
 }
@@ -52,15 +52,12 @@ em, i {
     font-style: italic;
 }
 
-
-
-
 a {
     color: v.$primary;
     @include m.smooth-transition(color);
 
     &:hover {
-        color: darken(v.$primary, 10%);
+        color: color.adjust(v.$primary, $lightness: 10%);
         text-decoration: underline;
     }
 
@@ -139,9 +136,6 @@ hr {
     border-top: v.$border-width solid v.$border-base;
     margin: v.$spacer * 1.5 0;
 }
-
-
-
 
 ::selection {
     background-color: v.$primary;

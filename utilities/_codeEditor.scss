@@ -1,0 +1,40 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.code-editor{
+    background-color: v.$bg-surface;
+    color: v.$text-base;
+    border: 1px solid v.$border-base;
+    border-radius: v.$border-radius-lg;
+    padding: (v.$spacer * 3) (v.$spacer * 1.5) (v.$spacer * 1.5) (v.$spacer * 1.5);
+    margin-bottom: v.$spacer * 2;
+    position: relative;
+    overflow-x: auto;
+    font-family: v.$font-family-base ;
+    font-size: v.$font-size-sm;
+    @include m.shadow('md');
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        width: 12px;
+        height: 12px;
+        background-color: v.$primary;
+        border-radius: v.$border-radius-pill ;
+        box-shadow: 
+            20px 0 0 v.$warning,
+            40px 0 0 v.$success;
+    }
+}
+
+.code-tag{
+    color: v.$secondary;
+}
+.code-attr{
+    color: v.$info;
+}
+.code-val{
+    color: v.$success;
+}

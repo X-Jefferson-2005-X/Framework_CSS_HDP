@@ -1,0 +1,23 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+// Tamaño de fuente base
+
+@each $size, $value in v.$font-sizes {
+    .fs-#{$size} {
+    font-size: $value;
+    line-height: 1.2;
+    }
+}
+
+// Peso de fuente
+.fw-light{font-weight: v.$font-weight-light;}
+.fw-normal{font-weight: v.$font-weight-normal;}
+.fw-bold{font-weight: v.$font-weight-bold;}
+
+// Alineacion de texto
+.text-left{text-align: left;}
+.text-center{text-align: center;}
+.text-right{text-align: right;}
+.text-end{text-align: end;} 
+.text-justify{text-align: justify;}

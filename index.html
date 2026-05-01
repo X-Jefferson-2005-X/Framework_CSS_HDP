@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InceneroarUI · Framework CSS moderno y modular</title>
+    <meta name="description" content="InceneroarUI es un framework CSS Mobile First, modular y veloz. Componentes pulidos, utilidades atómicas y animaciones fluidas listas para producción.">
+
+    
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        .nav-toggle { display: none; }
+        .nav-toggle:checked ~ .container .navbar-menu { display: flex; }
+
+        .nav-burger {
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 28px;
+            height: 22px;
+            cursor: pointer;
+            background: transparent;
+            border: 0;
+            padding: 0;
+        }
+        .nav-burger span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: #f3f4f6;
+            border-radius: 4px;
+        }
+        @media (min-width: 768px) {
+            .nav-burger { display: none; }
+        }
+
+        pre, code {
+            font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        }
+        pre {
+            margin: 0;
+            white-space: pre;
+            overflow-x: auto;
+            font-size: 0.875rem;
+            line-height: 1.55;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="checkbox" id="navToggle" class="nav-toggle">
+    <nav class="navbar navbar--sticky">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">InceneroarUI</a>
+
+            <label for="navToggle" class="nav-burger" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <ul class="navbar-menu">
+                <li><a href="index.html" class="navbar-link navbar-link--active">Inicio</a></li>
+                <li><a href="documentacion.html" class="navbar-link">Documentacion</a></li>
+                <li><a href="documentacion.html#components" class="navbar-link">Componentes</a></li>
+                <li><a href="documentacion.html#utilities" class="navbar-link">Utilidades</a></li>
+                <li><a href="documentacion.html#animations" class="navbar-link">Animaciones</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+
+                <div class="col-12 col-md-7">
+                    <span class="badge badge--primary badge--pill mb-3">v1.0 · estable</span>
+
+                    <h1 class="fs-1 fw-bold text-light mt-2">
+                        Construye interfaces con
+                        <span class="text-primary">fuerza y precision.</span>
+                    </h1>
+
+                    <p class="fs-5 text-muted mt-3">
+                        InceneroarUI es un framework CSS Mobile First inspirado en la
+                        intensidad del combate. Sistema de rejilla de 12 columnas,
+                        utilidades atomicas, componentes accesibles y animaciones
+                        cuidadas — todo escrito con SASS y arquitectura 7-1.
+                    </p>
+
+                    <div class="d-flex gap-2 flex-wrap mt-4">
+                        <a href="documentacion.html" class="btn btn--primary btn--lg btn--submit">
+                            Ver documentacion
+                        </a>
+                        <a href="documentacion.html#install" class="btn btn--outline-light btn--lg">
+                            Empezar en 1 minuto
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-5 mt-5">
+                    <div class="card card--intimidate">
+                        <div class="card__header d-flex align-items-center gap-2">
+                            <span class="badge badge--danger">●</span>
+                            <span class="badge badge--warning">●</span>
+                            <span class="badge badge--success">●</span>
+                            <span class="ms-2 text-muted">install.sh</span>
+                        </div>
+                        <div class="card__body">
+<pre class="text-light"><span class="text-muted"># Vincula el CSS desde tu HTML</span>
+&lt;link rel=<span class="text-success">"stylesheet"</span>
+      href=<span class="text-success">"scss/main.css"</span>&gt;
+
+<span class="text-muted"># O via CDN (proximamente)</span>
+&lt;link rel=<span class="text-success">"stylesheet"</span>
+      href=<span class="text-success">"cdn/inceneroar.min.css"</span>&gt;</pre>
+                        </div>
+                        <div class="card__footer">
+                            Listo para producir en menos de un minuto.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+
+            <div class="text-center mb-5">
+                <span class="badge badge--secondary badge--pill">Por que InceneroarUI</span>
+                <h2 class="fs-2 fw-bold text-light mt-3">Tres pilares, cero compromisos</h2>
+                <p class="text-muted mt-2">
+                    Pensado para escalar desde un landing hasta un dashboard completo.
+                </p>
+            </div>
+
+            <div class="row gap-3">
+
+                <div class="col-12 col-md-4">
+                    <div class="card card--entrance">
+                        <div class="card__body">
+                            <div class="badge badge--primary badge--pill badge--float mb-3">01</div>
+                            <h3 class="fs-4 fw-bold text-light">Arquitectura modular</h3>
+                            <p class="text-muted mt-2">
+                                Patron 7-1 con SASS: variables, mixins, base, layout,
+                                componentes y utilidades. Cada pieza vive en su archivo
+                                y se importa con <code class="text-primary">@use</code>.
+                            </p>
+                        </div>
+                        <div class="card__footer">abstracts · base · components · utilities</div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <div class="card card--entrance">
+                        <div class="card__body">
+                            <div class="badge badge--secondary badge--pill badge--float mb-3">02</div>
+                            <h3 class="fs-4 fw-bold text-light">Sistema de utilidades</h3>
+                            <p class="text-muted mt-2">
+                                Clases atomicas para spacing, flexbox, tipografia,
+                                colores, bordes y sombras. Maquetas mas rapido sin
+                                escribir CSS personalizado.
+                            </p>
+                        </div>
+                        <div class="card__footer">m-* · p-* · d-flex · gap-* · rounded</div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <div class="card card--entrance">
+                        <div class="card__body">
+                            <div class="badge badge--success badge--pill badge--float mb-3">03</div>
+                            <h3 class="fs-4 fw-bold text-light">Animaciones fluidas</h3>
+                            <p class="text-muted mt-2">
+                                Mas de 15 efectos listos para botones, tarjetas,
+                                alertas, formularios, tablas, badges y navbar.
+                                Curvas de aceleracion cuidadas, sin librerias.
+                            </p>
+                        </div>
+                        <div class="card__footer">btn--submit · card--intimidate · alert--victory</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-dark">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-6">
+                    <h2 class="fs-2 fw-bold text-light">
+                        Mobile First de verdad,
+                        <span class="text-primary">no como adorno.</span>
+                    </h2>
+                    <p class="text-muted mt-3">
+                        Cada media query usa <code class="text-secondary">min-width</code>:
+                        el sitio se construye desde el movil hacia arriba. Cuatro
+                        breakpoints (sm, md, lg, xl) cubren desde un telefono
+                        en vertical hasta una pantalla 4K.
+                    </p>
+
+                    <ul class="mt-4">
+                        <li class="d-flex align-items-center gap-2 mb-2">
+                            <span class="badge badge--success">OK</span>
+                            <span class="text-light">Grid de 12 columnas con offsets y order</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-2 mb-2">
+                            <span class="badge badge--success">OK</span>
+                            <span class="text-light">Componentes accesibles por defecto</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-2 mb-2">
+                            <span class="badge badge--success">OK</span>
+                            <span class="text-light">Paleta consistente derivada de variables</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <span class="badge badge--success">OK</span>
+                            <span class="text-light">Respeta <code class="text-secondary">prefers-reduced-motion</code></span>
+                        </li>
+                    </ul>
+
+                    <a href="documentacion.html" class="btn btn--primary mt-4">
+                        Explorar el manual
+                    </a>
+                </div>
+
+                <div class="col-12 col-md-6 mt-5">
+                    <div class="card">
+                        <div class="card__header">Paleta oficial</div>
+                        <div class="card__body">
+                            <div class="row gap-2">
+                                <div class="col-6">
+                                    <div class="bg-primary rounded p-4 text-center text-light fw-bold">Primary</div>
+                                    <p class="text-muted text-center mt-2">#d62828</p>
+                                </div>
+                                <div class="col-6">
+                                    <div class="bg-secondary rounded p-4 text-center text-light fw-bold">Secondary</div>
+                                    <p class="text-muted text-center mt-2">#ff6a00</p>
+                                </div>
+                                <div class="col-6">
+                                    <div class="bg-success rounded p-4 text-center text-light fw-bold">Success</div>
+                                    <p class="text-muted text-center mt-2">#22c55e</p>
+                                </div>
+                                <div class="col-6">
+                                    <div class="bg-info rounded p-4 text-center text-light fw-bold">Info</div>
+                                    <p class="text-muted text-center mt-2">#3b82f6</p>
+                                </div>
+                                <div class="col-6">
+                                    <div class="bg-warning rounded p-4 text-center fw-bold" style="color:#0f0f0f">Warning</div>
+                                    <p class="text-muted text-center mt-2">#f59e0b</p>
+                                </div>
+                                <div class="col-6">
+                                    <div class="bg-danger rounded p-4 text-center text-light fw-bold">Danger</div>
+                                    <p class="text-muted text-center mt-2">#8b0000</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="card">
+                <div class="card__body text-center p-5">
+                    <h2 class="fs-2 fw-bold text-light">
+                        Listo para encender tu siguiente proyecto?
+                    </h2>
+                    <p class="text-muted mt-3">
+                        Una sola hoja de estilos. Cero dependencias. Todo el control.
+                    </p>
+                    <div class="d-flex justify-content-center gap-2 flex-wrap mt-4">
+                        <a href="documentacion.html" class="btn btn--primary btn--lg btn--submit">
+                            Empezar ahora
+                        </a>
+                        <a href="documentacion.html#components" class="btn btn--outline-secondary btn--lg">
+                            Ver componentes
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-12 col-md-4">
+                    <h3 class="footer-title">InceneroarUI</h3>
+                    <p>
+                        Framework CSS Mobile First construido con SASS.
+                        Modular, ligero y pensado para que tu UI golpee fuerte.
+                    </p>
+                </div>
+
+                <div class="col-6 col-md-3 mt-4">
+                    <h3 class="footer-title">Producto</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="documentacion.html#install">Instalacion</a></li>
+                        <li><a href="documentacion.html#grid">Grid</a></li>
+                        <li><a href="documentacion.html#components">Componentes</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-3 mt-4">
+                    <h3 class="footer-title">Recursos</h3>
+                    <ul class="footer-links">
+                        <li><a href="documentacion.html#utilities">Utilidades</a></li>
+                        <li><a href="documentacion.html#animations">Animaciones</a></li>
+                        <li><a href="documentacion.html#palette">Paleta</a></li>
+                        <li><a href="documentacion.html">Manual completo</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-12 col-md-2 mt-4">
+                    <h3 class="footer-title">Version</h3>
+                    <p>v1.0.0</p>
+                    <span class="badge badge--success badge--pill">Estable</span>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom mt-5">
+                <p>© 2026 InceneroarUI. Construido con SASS.</p>
+                <p>Hecho con disciplina y cafe.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+// 1. Abstracts Variables y Mixins globales
+@use 'abstracts/variables';
+@use 'abstracts/mixins';
+
+// 2. Base (Reseteos globales)
+@use 'base/reset';
+@use 'base/typography';
+
+// 3. Layout (Estructura de rejilla)
+@use 'layout/grid';
+
+// 4. Components (Componentes UI)
+@use 'components/buttons';
+@use 'components/cards';
+@use 'components/alerts';
+@use 'components/forms';
+@use 'components/docs-nav';
+@use 'layout/navbar';
+@use 'components/badges';
+@use 'components/tables';
+@use 'layout/footer';
+@use 'layout/container';
+@use 'layout/header';
+
+
+// 5. Utilities Clases de un solo proposito
+@use 'utilities/animationsButtons';
+@use 'utilities/animationsCards';
+@use 'utilities/animationsAlerts';
+@use 'utilities/animationsForms';
+@use 'utilities/animationsTables';
+@use 'utilities/animationsBadges';
+@use 'utilities/animationsNavbars';
+@use 'utilities/fixedSidebar';
+@use 'utilities/typographyStyles';
+@use 'utilities/spacing';
+@use 'utilities/colors';
+@use 'utilities/flexbox';
+@use 'utilities/borders';
+@use 'utilities/codeEditor';  
+

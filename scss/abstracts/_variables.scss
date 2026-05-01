@@ -1,0 +1,124 @@
+// Paleta de Colores
+// Colores de Marca
+$primary: #d62828;     // Rojo fuego 
+$secondary: #ff6a00;   // Naranja 
+
+// Colores Semanticos
+$success: #22c55e;
+$danger: #8b0000;
+$warning: #f59e0b;
+$info: #3b82f6;
+
+// Escala de Grises
+$white: #ffffff;
+$bg-surface: #1f1f1f;     // Fondo tarjetas oscuro
+$border-base: #3a3a3a;    // Bordes metalicos
+$text-secundario: #9ca3af;
+$text-base: #f3f4f6;
+$bg-base: #0f0f0f;        // Fondo principal estilo arena de combate
+
+// Mapa de colores para iteracion @each en utilidades y comnponentes
+$colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "danger": $danger,
+  "warning": $warning,
+  "info": $info,
+  "light": $text-base,
+  "dark": $bg-base,
+);
+// Tipografia
+$font-family-base: "Inter", sans-serif, system-ui;
+$font-family-heading: "Montserrat", system-ui, sans-serif;
+
+$font-size-base: 1rem; // 16px
+$font-size-sm: 0.875rem; // 14px
+$font-size-lg: 1.125rem; // 18px
+
+// Pesos y altura de linea
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+$line-height-base: 1.5; // 24px para texto de 16px
+
+// escala tipografica para clases .fs-1 y demas
+$font-sizes: (
+  1: 2.5rem,
+  //40px
+  2: 2rem,
+  //32px
+  3: 1.75rem,
+  //28px
+  4: 1.5rem,
+  //24px
+  5: 1.25rem,
+  //20px
+  6: 1rem, //16px
+);
+
+// Breakpoints -- Diseño Responsivo
+
+$breakpoints: (
+  "sm": 576px,
+  // Moviles en horizontal
+  "md": 768px,
+  // Tablets
+  "lg": 992px,
+  // Laptops y Escritorios pequeños
+  "xl": 1280px, // Pantallas grandes
+);
+
+// contenedores ancho maximo para o por cada breakpoint
+$container-max-widths: (
+  "sm": 540px,
+  "md": 720px,
+  "lg": 960px,
+  "xl": 1200px,
+);
+// Espaciado y Bordes
+
+$spacer: 1rem; // Medida para margenes y paddings
+$border-radius: 0.375rem; // Redondeo estandar para botones y tarjetas
+
+// mapa de espaciados .mt-0 y demas
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,
+  // 4px
+  2: $spacer * 0.5,
+  // 8px
+  3: $spacer,
+  // 16px
+  4: $spacer * 1.5,
+  // 24px
+  5: $spacer * 3, // 48px
+);
+
+//variables de redondeo
+$border-radius-sm: 0.25rem; //4px
+$border-radius-lg: 1rem; //16px
+$border-radius-pill: 50rem; // Para bordes completamente redondeados 
+
+//bordes y sombras
+$border-width: 1px; // Ancho estandar para bordes
+$border-color: $border-base; // Color estandar para bordes
+
+$shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.15); // Sombra ligera para elementos pequeños
+$shadow:
+  0 4px 6px -1px rgba(0, 0, 0, 0.2),
+  0 2px 4px -1px rgba(0, 0, 0, 0.12); // Sombra estandar para tarjetas y modales
+$shadow-lg:
+  0 10px 15px -3px rgba(0, 0, 0, 0.25),
+  0 4px 6px -2px rgba(0, 0, 0, 0.15); // Sombra intensa para elementos destacados
+
+//grid
+$grid-columns: 12; // Numero de columnas en el sistema de grid
+$grid-gutter: 1.5rem; //24 px gap entre columnas
+
+//Z-index
+$zindex-dropdown: 1000; // Para dropdowns y menus desplegables
+$zindex-sticky: 1020; // Para elementos sticky como navbars
+$zindex-fixed: 1030; // Para elementos fixed como modales
+$zindex-modal: 1050; // Para modales y overlays
+$zindex-tooltip: 1070; // Para tooltips y popovers

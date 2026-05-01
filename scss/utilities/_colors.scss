@@ -1,0 +1,26 @@
+@use '../abstracts/variables' as v;
+
+// Colores de texto
+
+@each $name, $color in v.$colors {
+    .text-#{$name} {
+        color: $color !important;
+    }
+}
+
+.text-muted{ 
+    color: v.$text-secundario !important; 
+}
+.text-white{ 
+    color: v.$white !important; 
+}
+
+// Colores de fondo
+@each $name, $color in v.$colors {
+    .bg-#{$name} {
+        background-color: $color !important;
+    }
+}
+
+.bg-white { background-color: v.$white !important; }
+.bg-muted { background-color: v.$text-secundario !important; }

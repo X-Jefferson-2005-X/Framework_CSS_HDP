@@ -1,0 +1,169 @@
+@use 'variables' as v;
+@use 'sass:map';
+@use 'sass:math';
+@use 'sass:color';
+// SISTEMA RESPONSIVO (Layout & Grid)
+
+// Mobile First: aplica estilos DESDE el breakpoint indicado hacia arriba
+@mixin respond-to($breakpoint) {
+    @if map.has-key(v.$breakpoints, $breakpoint) {
+        $min-width: map.get(v.$breakpoints, $breakpoint);
+        @media (min-width: $min-width) {
+            @content;
+        }
+    } @else {
+        @error "BREAKPOINT '#{$breakpoint}' NO EXISTE. LAS OPCIONES VALIDAS SON: #{map.keys(v.$breakpoints)}.";
+    }
+}
+
+// Desktop First: aplica estilos DESDE el breakpoint indicado hacia abajo
+@mixin respond-below($breakpoint) {
+    @if map.has-key(v.$breakpoints, $breakpoint) {
+        $max-width: map.get(v.$breakpoints, $breakpoint) - 0.02px;
+        @media (max-width: $max-width) {
+            @content;
+        }
+    } @else {
+        @error "BREAKPOINT '#{$breakpoint}' NO EXISTE.";
+    }
+}
+
+
+// SISTEMA GRID (12 columnas)
+
+@mixin make-col($size, $columns: 12) {
+    flex: 0 0 auto;
+    width: math.percentage(math.div($size, $columns));
+}
+
+@mixin make-col-auto {
+    flex: 0 0 auto;
+    width: auto;
+}
+
+
+// HELPERS DE FLEXBOX
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+}
+
+
+// EFECTOS VISUALES
+
+@mixin smooth-transition($property: all, $duration: 0.2s) {
+    transition: $property $duration ease-in-out;
+}
+
+@mixin shadow($size: 'md') {
+    @if $size == 'sm' {
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    } @else if $size == 'md' {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    } @else if $size == 'lg' {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+}
+
+
+// BOTONES (Variantes de estilo y tamaño)
+
+@mixin btn-solid($bg, $text: v.$bg-base) {
+    background-color: $bg;
+    border: 2px solid $bg;
+
+    @if color.channel($bg, 'lightness', $space: hsl) > 40%{
+        color: v.$bg-base; // texto oscuro para fondos claros
+    } @else {
+        color: v.$text-base; // texto claro para fondos oscuros
+    }
+
+    &:hover:not(:disabled) {
+        background-color: color.adjust($bg, $lightness: 12%);
+        border-color: color.adjust($bg, $lightness: -12%);
+    }
+
+    &:active:not(:disabled) {
+        transform: scale(0.97);
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
+@mixin btn-outline($color) {
+    background-color: transparent;
+    color: $color;
+    border: 2px solid $color;
+
+    &:hover:not(:disabled) {
+        background-color: $color;
+        color: v.$bg-base;
+    }
+
+    &:active:not(:disabled) {
+        transform: scale(0.97);
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
+@mixin btn-size($size) {
+    @if $size == 'sm' {
+        padding: 0.25rem 0.75rem;
+        font-size: v.$font-size-sm;
+    } @else if $size == 'md' {
+        padding: 0.5rem 1.25rem;
+        font-size: v.$font-size-base;
+    } @else if $size == 'lg' {
+        padding: 0.75rem 1.75rem;
+        font-size: v.$font-size-lg;
+    }
+}
+
+// ALERTAS Y FORMULARIOS
+@mixin alert-variant($border, $bg, $text) {
+    background-color: $bg;
+    border-left: 4px solid $border;
+    color: $text;
+
+    a {
+        color: color.adjust($text, $lightness: 10%);
+        text-decoration: underline;
+    }
+}
+
+@mixin input-valid {
+    border-color: v.$success;
+    &:focus {
+        box-shadow: 0 0 0 3px rgba(v.$success, 0.25);
+    }
+}
+
+@mixin input-invalid {
+    border-color: v.$danger;
+    &:focus {
+        box-shadow: 0 0 0 3px rgba(v.$danger, 0.25);
+    }
+}

@@ -1,0 +1,44 @@
+@keyframes hud-slide-in {
+    0% { 
+        opacity: 0; 
+        transform: translateX(-30px) scale(0.95); // Viene desde la izquierda un poco mas pequeña
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateX(0) scale(1); 
+    }
+}
+
+.alert--entrance {
+    // Usamos un cubic-bezier para que frene de golpe al final, dando sensacion de peso
+    animation: hud-slide-in 0.4s cubic-bezier(0.0, 0.55, 0.45, 1) forwards;
+}
+
+@keyframes critical-shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-6px); }
+    40% { transform: translateX(6px); }
+    60% { transform: translateX(-3px); }
+    80% { transform: translateX(3px); }
+}
+
+.alert--critical {
+    /* Combinamos 2 animaciones: Primero entra, y justo cuando termina de entrar (0.4s de delay), tiembla */
+    animation: 
+        hud-slide-in 0.4s cubic-bezier(0.0, 0.55, 0.45, 1) forwards,
+        critical-shake 0.4s 0.4s ease-in-out;
+}
+
+// DESTELLO DE VICTORIA (Para éxito / Success)
+@keyframes victory-glow {
+    0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); } // Color verde esmeralda
+    70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.alert--victory {
+    /* Igual que la anterior: entra, y luego empieza a palpitar infinitamente */
+    animation: 
+        hud-slide-in 0.4s cubic-bezier(0.0, 0.55, 0.45, 1) forwards,
+        victory-glow 1.5s 0.4s infinite;
+}

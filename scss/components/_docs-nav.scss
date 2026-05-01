@@ -1,0 +1,36 @@
+@use '../abstracts/variables' as v;
+
+.docs-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    &__group {
+        margin-bottom: 1.5rem;
+    }
+
+    &__title {
+        font-family: v.$font-family-heading; 
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: v.$primary; 
+        margin-bottom: 0.5rem;
+    }
+
+    a {
+        display: block;
+        padding: 0.35rem 0.75rem;
+        color: v.$text-secundario;
+        border-left: 2px solid transparent;
+        font-size: 0.95rem;
+        transition: all 0.2s ease;
+
+        &:hover {
+            color: v.$text-base;
+            border-left-color: v.$primary;
+            background-color: rgba(v.$primary, 0.05);
+        }
+    }
+}

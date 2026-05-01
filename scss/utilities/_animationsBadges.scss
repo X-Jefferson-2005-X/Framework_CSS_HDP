@@ -1,0 +1,31 @@
+// PULSO DE VITALIDAD (Success)
+@keyframes badge-glow {
+    0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+    70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.badge--pulse {
+    animation: badge-glow 2s infinite;
+}
+
+// ALERTA CRITICA (Danger)
+@keyframes badge-flash {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(0.95); background-color: #ff4d4d; }
+}
+
+.badge--flash {
+    animation: badge-flash 1s infinite ease-in-out;
+}
+
+// FLOTACION (Info/Primary)
+@keyframes badge-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+.badge--float {
+    display: inline-block;
+    animation: badge-float 3s infinite ease-in-out;
+}

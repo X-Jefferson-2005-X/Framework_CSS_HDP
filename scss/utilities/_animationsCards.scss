@@ -1,0 +1,51 @@
+// INTIMIDACION
+.card--intimidate {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+    border: 1px solid transparent; // Prepara el borde
+
+    &:hover {
+        transform: translateY(-8px); // Se levanta bastante
+        box-shadow: 0 12px 20px -8px rgba(214, 40, 40, 0.6); // Sombra roja intensa
+        border-color: rgba(214, 40, 40, 0.3); // El borde se pinta ligeramente de rojo
+    }
+}
+
+// 2. SELECCION (Tarjetas clickeables)
+.card--selectable {
+    cursor: pointer; // Indica que toda la tarjeta es clickeable
+    transition: all 0.2s ease-in-out;
+    border: 2px solid #374151; // Borde gris oscuro por defecto
+
+    &:hover {
+        border-color: #d62828; // Borde rojo al pasar el mouse
+        background-color: rgba(214, 40, 40, 0.05); // Fondo rojizo transparente
+    }
+
+    &:active {
+        transform: scale(0.98); // Se hunde al hacer clic
+        box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5); // Sombra interna para dar profundidad
+    }
+}
+
+//ENTRADA AL RING (Aparicion al cargar)
+@keyframes entrance-ring {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.card--entrance {
+    animation: entrance-ring 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+    // El cubic-bezier le da un pequeño rebote al final de la animacion
+}
+
+// Cascada automatica
+// Si hay varias tarjetas seguidas,la animacion de cada una se retrasa para que entren una tras otra
+.card--entrance:nth-child(1) { animation-delay: 0.1s; }
+.card--entrance:nth-child(2) { animation-delay: 0.25s; }
+.card--entrance:nth-child(3) { animation-delay: 0.4s; }

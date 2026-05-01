@@ -1,0 +1,36 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+@use '../base/typography' as t;
+
+
+.fixed-sidebar{
+    @include m.respond-to('lg') {
+        position: sticky;
+        top: 80px; // para que quede debajo de la barra de navegación
+        height: calc(100vh - 80px); // altura total menos la altura de la barra
+        overflow-y: auto;
+        overflow-x:auto ;
+        padding-right: v.$spacer; // espacio interno a la derecha
+        
+        &::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: v.$border-color;
+            border-radius: v.$border-radius-sm;
+        }
+    }
+}
+
+article[id]{
+    scroll-margin-top: 100px; // para que el titulo no quede oculto debajo de la barra de navegacion al hacer scroll
+}
+
+
+
+
+
+
+
+

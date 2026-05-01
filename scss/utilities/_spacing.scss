@@ -1,0 +1,55 @@
+@use '../abstracts/variables' as v;
+
+// Margenes 
+@each $num, $value in v.$spacers{
+    .m-#{$num} {
+        margin: $value !important;
+    }
+    .mt-#{$num} {
+        margin-top: $value !important;
+    }
+    .mb-#{$num} {
+        margin-bottom: $value !important;
+    }
+    .ms-#{$num} {
+        margin-left: $value !important;
+    }
+    .me-#{$num} {
+        margin-right: $value !important;
+    }
+    .mx-#{$num} {
+        margin-left: $value !important;
+        margin-right: $value !important;
+    }
+    .my-#{$num} {
+        margin-top: $value !important;
+        margin-bottom: $value !important;
+    }
+}
+
+// Paddings
+@each $num, $value in v.$spacers{
+    .p-#{$num} {
+        padding: $value !important;
+    }
+    .pt-#{$num} {
+        padding-top: $value !important;
+    }
+    .pb-#{$num} {
+        padding-bottom: $value !important;
+    }
+    .ps-#{$num} {
+        padding-left: $value !important;
+    }
+    .pe-#{$num} {
+        padding-right: $value !important;
+    }
+    .px-#{$num} {
+        padding-left: $value !important;
+        padding-right: $value !important;
+    }
+    .py-#{$num} {
+        padding-top: $value !important;
+        padding-bottom: $value !important;
+    }
+}

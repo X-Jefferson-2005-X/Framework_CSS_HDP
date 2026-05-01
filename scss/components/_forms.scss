@@ -1,0 +1,95 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+// ETIQUETA DE INPUT
+
+.form-label {
+    display: inline-block;
+    margin-bottom: v.$spacer * 0.5;
+
+    font-family: v.$font-family-base;
+    font-size: v.$font-size-base;
+    font-weight: v.$font-weight-bold;
+    color: v.$text-base;
+}
+
+// CONTENEDOR DE GRUPO DE INPUT (label + input + mensaje)
+.form-group {
+    margin-bottom: v.$spacer;
+}
+
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+
+    font-family: v.$font-family-base;
+    font-size: v.$font-size-base;
+    line-height: v.$line-height-base;
+    color: v.$text-base;
+
+    background-color: v.$bg-base;
+    border: v.$border-width solid v.$border-base;
+    border-radius: v.$border-radius;
+
+    @include m.smooth-transition(border-color);
+
+    // Placeholder con color atenuado
+    &::placeholder {
+        color: v.$text-secundario;
+        opacity: 1;
+    }
+
+    // Estado de enfoque: quitamos el outline feo y usamos box-shadow suave
+    &:focus {
+        outline: 0;
+        border-color: v.$primary;
+        box-shadow: 0 0 0 3px rgba(v.$primary, 0.25);
+    }
+
+    // Estado deshabilitado
+    &:disabled {
+        background-color: v.$bg-surface;
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+}
+
+
+// ESTADOS DE VALIDACION
+// Se aplican agregando .is-valid o .is-invalid al .form-control
+
+.form-control.is-valid {
+    @include m.input-valid;
+}
+
+.form-control.is-invalid {
+    @include m.input-invalid;
+}
+
+
+// CHECKBOX Y RADIO
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: v.$spacer * 0.5;
+
+    // Input dentro del form-check
+    input[type="checkbox"],
+    input[type="radio"] {
+        width: 1rem;
+        height: 1rem;
+        accent-color: v.$primary; // color nativo del control
+        cursor: pointer;
+    }
+
+    // Label dentro del form-check
+    label {
+        font-family: v.$font-family-base;
+        font-size: v.$font-size-base;
+        color: v.$text-base;
+        cursor: pointer;
+    }
+}

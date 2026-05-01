@@ -1,0 +1,23 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.rounded {
+    border-radius: v.$border-radius !important;
+}
+.rounded-sm {
+    border-radius: v.$border-radius-sm !important;
+}
+.rounded-lg {
+    border-radius: v.$border-radius-lg !important;
+}
+.rounded-pill {
+    border-radius: v.$border-radius-pill !important;
+}
+.rounded-0 {
+    border-radius: 0 !important;
+}
+
+.shadow {@include m.shadow('md') }
+.shadow-sm {@include m.shadow('sm') }
+.shadow-lg {@include m.shadow('lg') }
+.shadow-none { box-shadow: none !important; }   

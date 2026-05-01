@@ -1,0 +1,44 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+@use 'sass:map';
+
+
+// ESTRUCTURA BASE
+
+.alert {
+    position: relative;
+    padding: v.$spacer v.$spacer * 1.25;
+    margin-bottom: v.$spacer;
+
+    font-family: v.$font-family-base;
+    font-size: v.$font-size-base;
+    line-height: v.$line-height-base;
+
+    border-radius: v.$border-radius;
+
+    // Los enlaces dentro de la alerta tienen estilo propio
+    a {
+        font-weight: v.$font-weight-bold;
+        text-decoration: underline;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}
+
+
+
+// Recorre $colors y genera .alert--primary, .alert--success, etc.
+// La alerta tiene: fondo oscuro de la marca, borde izquierdo del color
+// semantico y texto brillante para contraste.
+
+@each $name, $color in v.$colors {
+    .alert--#{$name} {
+        @include m.alert-variant(
+            $border: $color,
+            $bg: v.$bg-surface,
+            $text: $color
+        );
+    }
+}

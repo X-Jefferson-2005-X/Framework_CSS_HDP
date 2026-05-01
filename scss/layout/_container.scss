@@ -1,0 +1,42 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+@use 'sass:math';
+@use 'sass:map';
+
+%container-base {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: math.div(v.$grid-gutter, 2);
+    padding-left: math.div(v.$grid-gutter, 2);
+    box-sizing: border-box;
+}
+
+.container-fluid {
+    @extend %container-base;
+}
+
+.container {
+    @extend %container-base;
+
+    @each $bp, $max-width in v.$container-max-widths {
+        @include m.respond-to($bp) {
+            max-width: $max-width;
+        }
+    }
+}
+
+@each $bp, $max-width in v.$container-max-widths {
+    .container-#{$bp} {
+        @extend %container-base;
+
+        @include m.respond-to($bp) {
+            max-width: $max-width;
+        }
+    }
+}
+
+.container-narrow {
+    @extend %container-base;
+    max-width: 720px;   
+}

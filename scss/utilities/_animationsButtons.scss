@@ -1,0 +1,210 @@
+// SCSS para el botón de Enviar
+.btn--submit {
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s;
+    
+    // Al pasar el mouse: Toma impulso hacia atrás (se hace un poco más pequeño)
+    &:hover {
+        transform: scale(0.96);
+        box-shadow: 0 4px 15px rgba(214, 40, 40, 0.4); // Brillo rojo/primary
+    }
+
+    // Al hacer clic: Dispara el golpe hacia adelante
+    &:active {
+        transform: scale(1.05) translateY(-2px);
+        box-shadow: 0 0 20px rgba(214, 40, 40, 0.8);
+    }
+}
+
+// SCSS para el botón de Login
+.btn--login {
+    position: relative;
+    overflow: hidden; // Fundamental para que la luz no se salga del botón
+    
+    // La "chispa" de luz que va a cruzar
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transform: skewX(-20deg);
+        transition: left 0.5s ease;
+    }
+
+    // Al pasar el mouse, la luz cruza el botón
+    &:hover::after {
+        left: 150%;
+    }
+}
+
+// Keyframe específico para este botón
+@keyframes shake-danger {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-3px) rotate(-1deg); }
+    75% { transform: translateX(3px) rotate(1deg); }
+}
+
+// SCSS para el botón de Eliminar
+.btn--delete {
+    background-color: transparent;
+    color: #ef4444; // Texto rojo por defecto
+    border: 1px solid #ef4444;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: #ef4444; // Se llena de rojo
+        color: white;
+        animation: shake-danger 0.3s ease-in-out infinite; // Vibra mientras el mouse esté encima
+        box-shadow: 0 0 15px rgba(239, 68, 68, 0.6);
+    }
+}
+// Animación de "Humo" para el botón de cancelar
+@keyframes smoke-fade {
+    0% { filter: blur(0px); opacity: 1; }
+    50% { filter: blur(1px); opacity: 0.8; }
+    100% { filter: blur(0px); opacity: 1; }
+}
+
+.btn--cancel {
+    background-color: #374151; // Un gris oscuro azulado (neutro)
+    color: #d1d5db;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid transparent;
+
+    &:hover {
+        background-color: #1f2937; // Más oscuro al hover
+        color: #ffffff;
+        transform: translateX(-5px); // Se mueve hacia la izquierda (retroceso)
+        box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
+        filter: grayscale(0.5); // Pierde un poco de saturación
+    }
+
+    &:active {
+        transform: scale(0.95) translateX(-2px);
+        animation: smoke-fade 0.4s ease; // Efecto visual de "humo" al hacer clic
+    }
+}
+// Animaciones de Acción y Navegación
+
+// EDITAR: Efecto "Destello de Precision"
+.btn--edit {
+    background-color: #f59e0b; 
+    color: #000;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    
+    &:hover {
+        background-color: #fbbf24;
+        transform: scale(1.05) rotate(-1deg); // Ligera inclinacion como una herramienta
+        box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+}
+
+// 2. NAVEGACION - VOLVER: Efecto "Retorno"
+.btn--back {
+    background-color: #4b5563;
+    color: white;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: #374151;
+        padding-right: 1.5rem; // Se expande hacia la izquierda visualmente
+        padding-left: 0.8rem;
+        transform: translateX(-8px); // Desplazamiento lateral
+    }
+
+    // El simbolo < se mueve mas
+    span {
+        display: inline-block;
+        transition: transform 0.3s ease;
+    }
+    &:hover span {
+        transform: translateX(-4px);
+    }
+}
+
+// 3. NAVEGACION - SIGUIENTE: Efecto "Arremetida"
+.btn--next {
+    background-color: #4b5563;
+    color: white;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: #374151;
+        padding-left: 1.5rem; 
+        padding-right: 0.8rem;
+        transform: translateX(8px); // Empuja hacia adelante
+    }
+
+    // El simbolo > se mueve mas
+    span {
+        display: inline-block;
+        transition: transform 0.3s ease;
+    }
+    &:hover span {
+        transform: translateX(4px);
+    }
+}
+
+// Animaciones de Utilidad (Descarga, Refresh, Favorito)
+
+// DESCARGAR / GUARDAR: Efecto "Gravedad"
+.btn--download {
+    background-color: #10b981; 
+    color: white;
+    transition: all 0.2s ease;
+    // Borde inferior grueso para simular 3D
+    box-shadow: 0 4px 0 #047857; 
+
+    &:hover {
+        background-color: #059669;
+        transform: translateY(2px); // Baja un poco
+        box-shadow: 0 2px 0 #047857; // La sombra se reduce (se acerca al suelo)
+    }
+
+    &:active {
+        transform: translateY(4px);
+        box-shadow: 0 0 0 #047857; // Se aplasta completamente
+    }
+
+    span {
+        display: inline-block;
+        transition: transform 0.3s ease;
+    }
+    &:hover span {
+        transform: translateY(3px); // La flecha de descarga cae
+    }
+}
+
+//ACTUALIZAR / REFRESH: Efecto "Giro"
+.btn--refresh {
+    background-color: #3b82f6; 
+    color: white;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: #2563eb;
+        box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+    }
+
+    span {
+        display: inline-block;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    // Al pasar el mouse gira media vuelta
+    &:hover span {
+        transform: rotate(180deg); 
+    }
+    
+    // Al hacer clic da la vuelta completa
+    &:active span {
+        transform: rotate(360deg); 
+    }
+}

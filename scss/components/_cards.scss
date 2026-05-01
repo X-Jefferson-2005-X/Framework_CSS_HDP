@@ -1,0 +1,57 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.card {
+    display: flex;
+    flex-direction: column;
+
+    background-color: v.$bg-surface;
+    border: v.$border-width solid v.$border-base;
+    border-radius: v.$border-radius;
+    box-shadow: v.$shadow;
+    overflow: hidden; // evita que la imagen se salga del borde redondeado
+
+    @include m.smooth-transition(transform, 0.25s);
+
+    // Animacion sutil al pasar el mouse
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: v.$shadow-lg;
+    }
+
+    // Encabezado de la tarjeta
+    &__header {
+        padding: v.$spacer v.$spacer * 1.25;
+        font-family: v.$font-family-heading;
+        font-size: v.$font-size-lg;
+        font-weight: v.$font-weight-bold;
+        color: v.$text-base;
+        border-bottom: v.$border-width solid v.$border-base;
+    }
+
+    // Imagen responsiva (no desborda el contenedor)
+    &__image {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    // Cuerpo de la tarjeta (contenido principal)
+    &__body {
+        padding: v.$spacer * 1.25;
+        color: v.$text-base;
+        font-size: v.$font-size-base;
+        line-height: v.$line-height-base;
+        flex-grow: 1; // empuja el footer hacia abajo si la card es flex
+    }
+
+    // Pie de la tarjeta
+    &__footer {
+        padding: v.$spacer v.$spacer * 1.25;
+        background-color: v.$bg-base;
+        color: v.$text-secundario;
+        font-size: v.$font-size-sm;
+        border-top: v.$border-width solid v.$border-base;
+    }
+}

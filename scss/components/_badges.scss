@@ -1,0 +1,47 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+@use 'sass:color';
+
+
+// ESTRUCTURA BASE
+
+.badge {
+    display: inline-block;
+    padding: 0.25em 0.6em;
+
+    font-family: v.$font-family-base;
+    font-size: 0.75rem; // 12px aprox, texto reducido
+    font-weight: v.$font-weight-bold;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    vertical-align: middle;
+
+    border-radius: v.$border-radius-sm;
+}
+
+
+// VARIANTE PILL (bordes completamente redondeados)
+
+.badge--pill {
+    border-radius: v.$border-radius-pill;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+}
+
+
+// GENERACION AUTOMATICA DE VARIANTES DE COLOR
+// Util para marcar items como "Nuevo", "Agotado", "En proceso", etc.
+
+@each $name, $color in v.$colors {
+    .badge--#{$name} {
+        background-color: $color;
+        @if color.channel($color, 'lightness', $space: hsl) > 40%{
+        color: v.$bg-base; // texto oscuro para fondos claros
+        } @else {
+        color: v.$text-base; // texto claro para fondos oscuros
+        }
+    }
+}

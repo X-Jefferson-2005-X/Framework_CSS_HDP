@@ -1,6 +1,15 @@
 @use '../abstracts/variables' as v;
 @use '../abstracts/mixins' as m;
 
+@each $num, $value in v.$spacers {
+    .gap-#{$num} {
+        gap: $value !important;
+    }
+}
+
+
+
+
 .d-flex {
     display: flex ;
 }

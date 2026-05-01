@@ -80,7 +80,9 @@ Coloca este `<link>` dentro del `<head>` de tu HTML:
 
 ```html
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JulioCesar1425/Framework_CSS_HDP@v1.0.0/scss/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/x-jefferson-2005-x/Framework_CSS_HDP@v1.0.0/css/main.css">
+
+
 
 
 ```
@@ -89,12 +91,12 @@ Coloca este `<link>` dentro del `<head>` de tu HTML:
 
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/JulioCesar1425/Framework_CSS_HDP.git
+   git clone https://github.com/x-jefferson-2005-x/Framework_CSS_HDP.git
    ```
-2. Copia la carpeta `scss/` a tu proyecto.
+2. Copia la carpeta `css/` a tu proyecto.
 3. Enlaza el CSS ya compilado en tu HTML:
    ```html
-   <link rel="stylesheet" href="./scss/main.css" />
+   <link rel="stylesheet" href="./css/main.css" />
    ```
 4. (Opcional) Si quieres recompilar tras modificar variables, instala SASS y ejecuta:
    ```bash
@@ -111,7 +113,7 @@ Coloca este `<link>` dentro del `<head>` de tu HTML:
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Mi App</title>
-    <link rel="stylesheet" href="./scss/main.css" />
+    <link rel="stylesheet" href="./css/main.css" />
   </head>
   <body>
     <div class="container my-4">
@@ -167,7 +169,7 @@ scss/
 
 La documentación oficial está construida **utilizando IncineroarUI** y desplegada en GitHub Pages:
 
-**[Visitar documentación](https://JulioCesar1425.github.io/Framework_CSS_HDP/)**
+**[Visitar documentación](https://x-jefferson-2005-x.github.io/Framework_CSS_HDP/)**
 
 Incluye ejemplos de cada componente con su correspondiente bloque de código HTML.
 

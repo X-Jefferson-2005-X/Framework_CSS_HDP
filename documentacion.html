@@ -191,38 +191,124 @@
                         breakpoint hacia arriba.
                     </div>
                 </article>
+                
 
-                <article id="install" class="mb-5">
-                    <span class="section-tag">01 · Empezar</span>
-                    <h2 class="fs-2 fw-bold text-light">Instalacion</h2>
-                    <p class="text-muted mt-2">
-                        Descarga el framework directamente o vincula la hoja de estilos compilada en el
-                        <code>&lt;head&gt;</code> de tu HTML.
-                    </p>
+    <article id="install" class="mb-5">
+    <span class="section-tag">01 · Empezar</span>
+    <h2 class="fs-2 fw-bold text-light">Instalacion</h2>
+    <p class="text-muted mt-2">
+        InceneroarUI te ofrece dos formas de trabajar dependiendo de tu flujo de desarrollo.
+        Descarga el framework directamente o vincula la hoja de estilos compilada.
+    </p>
 
-                    <div class="mb-4 mt-3">
-                        <a href="Incineroar-scss.zip" class="btn btn--primary" download>Descargar Framework (.zip)</a>
+    <!-- Botón de descarga -->
+    <div class="mt-4 mb-4">
+        <a href="IncineroarUI.zip" class="btn btn--primary btn--lg btn--download" download>
+            <span>↓</span> Descargar Framework (.zip)
+        </a>
+    </div>
+
+    <div class="row mt-4">
+    <div class="col-12 col-md-6">
+        <div class="card h-100"> <div class="card__header">
+                <span class="badge badge--primary badge--pill me-2">01</span>
+                Implementacion Rapida (CSS)
+            </div>
+            <div class="card__body">
+                <p class="text-muted small">
+                    Si solo necesitas los estilos finales, utiliza el archivo 
+                    pre-compilado en produccion:
+                </p>
+                <div class="demo mt-3">
+                    <div class="demo__code">
+                        <pre>&lt;link rel="stylesheet" href="css/main.css"&gt;</pre>
                     </div>
+                </div>
+                <p class="text-muted mt-3 fs-6">
+                    <strong>Ubicacion:</strong> Carpeta <code class="text-primary">css/</code>
+                </p>
+            </div>
+        </div>
+    </div>
 
-                    <div class="demo mt-4">
-                        <div class="demo__code">
-<pre class="code-editor">&lt;link rel="stylesheet" href="scss/main.css"&gt;</pre>
-                        </div>
-                    </div>
+    <div class="col-12 col-md-6">
+        <div class="card h-100">
+            <div class="card__header">
+                <span class="badge badge--secondary badge--pill me-2">02</span>
+                Personalizacion (SASS)
+            </div>
+            <div class="card__body">
+                <p class="text-muted small">
+                    Si quieres modificar variables y colores originales, 
+                    usa los archivos fuente:
+                </p>
+                <ul class="text-light mt-3 small" style="list-style: disc; margin-left: 1.5rem;">
+                    <li class="mb-2"><strong>Carpeta:</strong> <code class="text-secondary">scss/</code></li>
+                    <li class="mb-2"><strong>Requisito:</strong> Extensión <span class="text-primary">Live Sass</span></li>
+                    <li><strong>Uso:</strong> Edita <code class="text-secondary">_variables.scss</code></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 
-                    <p class="text-muted mt-3">Si trabajas con SASS directamente:</p>
-
-                    <div class="demo">
-                        <div class="demo__code">
-<pre class="code-editor">// main.scss
+    <h3 class="fs-4 fw-bold text-light mt-5">Si trabajas con SASS directamente</h3>
+    <p class="text-muted mt-2">
+        Importa los modulos que necesites en tu archivo principal:
+    </p>
+    <div class="demo mt-3">
+        <div class="demo__code">
+<pre>// main.scss
 @use 'abstracts/variables';
 @use 'abstracts/mixins';
 @use 'base/reset';
 @use 'components/buttons';
+@use 'components/cards';
 // ... resto de modulos</pre>
-                        </div>
-                    </div>
-                </article>
+        </div>
+    </div>
+
+    <h3 class="fs-4 fw-bold text-light mt-5">Estructura del Framework</h3>
+    <div class="table-responsive mt-3">
+        <table class="table table--bordered table--hover">
+            <thead class="table__thead">
+                <tr>
+                    <th>Carpeta</th>
+                    <th>Tipo de Archivo</th>
+                    <th>Proposito</th>
+                </tr>
+            </thead>
+            <tbody class="table__tbody">
+                <tr>
+                    <td><code class="text-warning">css/</code></td>
+                    <td>.css (Compilado)</td>
+                    <td>
+                        <span class="badge badge--success badge--pill">Implementacion</span>
+                        Archivo optimizado para el navegador
+                    </td>
+                </tr>
+                <tr>
+                    <td><code class="text-warning">scss/</code></td>
+                    <td>.scss (Fuente)</td>
+                    <td>
+                        <span class="badge badge--info badge--pill">Desarrollo</span>
+                        Codigo modular para personalizacion avanzada
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="alert alert--info mt-4">
+        <strong class="text-info">Recomendacion.</strong>
+        Para proyectos en produccion usa el CSS compilado. Para desarrollo 
+        y personalizacion profunda, trabaja con los archivos SCSS y 
+        compila cuando necesites.
+    </div>
+</article>
+
+
+
 
                 <article id="palette" class="mb-5">
                     <span class="section-tag">02 · Empezar</span>
